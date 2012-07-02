@@ -1,6 +1,6 @@
 module Arelastic
-  module Nodes
-    class Limit < Arelastic::Nodes::Node
+  module Filters
+    class Limit < Arelastic::Filter
       attr_reader :value
 
       def initialize value

@@ -1,6 +1,6 @@
 module Arelastic
-  module Nodes
-    class Ids < Arelastic::Nodes::Node
+  module Filters
+    class Ids < Arelastic::Filter
       attr_reader :values
 
       def initialize values

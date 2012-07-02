@@ -1,6 +1,6 @@
 module Arelastic
-  module Nodes
-    class Missing < Arelastic::Nodes::Node
+  module Filters
+    class Missing < Arelastic::Filter
       attr_reader :field
 
       def initialize field

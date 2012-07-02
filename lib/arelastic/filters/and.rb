@@ -1,9 +1,9 @@
 module Arelastic
-  module Nodes
-    class Or < Arelastic::Nodes::Node
+  module Filters
+    class And < Arelastic::Filter
       attr_reader :children
 
-      def initialize children
+      def initialize children = []
         @children = children
       end
 

@@ -1,6 +1,6 @@
 module Arelastic
-  module Nodes
-    class Not < Arelastic::Nodes::Node
+  module Filters
+    class Not < Arelastic::Filter
       attr_reader :filter
 
       def initialize filter

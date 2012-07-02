@@ -1,6 +1,6 @@
 module Arelastic
-  module Nodes
-    class Binary < Arelastic::Nodes::Node
+  module Filters
+    class Binary < Arelastic::Filter
       # predicates = numeric_range, prefix, range, term, terms
       attr_reader :field, :predicate, :value
 
