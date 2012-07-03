@@ -1,4 +1,4 @@
 module Arelastic
-  class Query
+  class Search
   end
 end
