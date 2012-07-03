@@ -1,4 +1,4 @@
 module Arelastic
-  class Query
+  class Query < Arelastic::Node
   end
 end

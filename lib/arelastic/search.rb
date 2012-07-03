@@ -1,4 +1,4 @@
 module Arelastic
-  class Search
+  class Search < Arelastic::Node
   end
 end
