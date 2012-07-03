@@ -8,7 +8,7 @@ module Arelastic
 
       def to_elastic
         result = {}
-        nodes.each { |node| result.merge! node.to_elastic }
+        nodes.each { |node| result.merge! convert_to_elastic(node) }
         result
       end
     end

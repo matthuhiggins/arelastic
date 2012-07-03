@@ -1,9 +1,26 @@
-attr_reader :children
+module Arelastic
+  module Arity
+    module Polyadic
+      def unary(operator)
+        @operator = operator
+        include Methods
 
-def initialize children = []
-  @children = children
-end
+        singleton_class.class_eval do
+          attr_reader :operator
+        end
 
-def as_elastic
-  {'and' => children.map { |child| child.as_elastic }}
+        attr_reader :children
+      end
+
+      module Methods
+        def initialize children
+          @children = children
+        end
+
+        def as_elastic
+          {self.class.operator => children.map { |child| convert_to_elastic(child) }}
+        end
+      end
+    end
+  end
 end
