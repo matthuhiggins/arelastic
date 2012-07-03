@@ -1,6 +1,7 @@
 module Arelastic
   class Node
-    include Arelastic::Actors::Binary
-    include Arelastic::Actors::Unary
+    include Arelastic::Arity::Binary
+    include Arelastic::Arity::Polyadic
+    include Arelastic::Arity::Unary
   end
 end
