@@ -5,8 +5,8 @@ module Arelastic
       extend Arelastic::Arities::Polyadic
       extend Arelastic::Arities::Unary
 
-      def convert_to_elastic(val)
-        val.respond_to?(:to_elastic) ? val.to_elastic : val
+      def convert_to_elastic(expr)
+        expr.respond_to?(:as_elastic) ? expr.as_elastic : expr
       end
     end
   end

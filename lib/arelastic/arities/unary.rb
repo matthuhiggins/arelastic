@@ -19,7 +19,7 @@ module Arelastic
         end
 
         def as_elastic
-          {self.class.field => expr}
+          {self.class.field => convert_to_elastic(expr)}
         end
       end
     end

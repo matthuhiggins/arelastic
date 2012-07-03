@@ -6,7 +6,7 @@ module Arelastic
         @grouping = Arelastic::Nodes::Grouping.new [query, filter]
       end
 
-      def to_elastic
+      def as_elastic
         { "filtered" => convert_to_elastic(grouping) }
       end
     end
