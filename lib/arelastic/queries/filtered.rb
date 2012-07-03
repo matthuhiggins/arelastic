@@ -1,6 +1,6 @@
 module Arelastic
   module Queries
-    class Filtered < Arelastic::Query
+    class Filtered < Arelastic::Queries::Query
       attr_accessor :grouping
       def initialize(query, filter)
         @grouping = Arelastic::Nodes::Grouping.new [query, filter]

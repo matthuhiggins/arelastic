@@ -1,6 +1,6 @@
 module Arelastic
   module Filters
-    class Exists < Arelastic::Filter
+    class Exists < Arelastic::Filters::Filter
       attr_reader :field
 
       def initialize field
@@ -8,7 +8,7 @@ module Arelastic
       end
 
       def as_elastic
-        {"exists" => { "field" : field }}
+        {"exists" => { "field" => field }}
       end
     end
   end

@@ -1,5 +1,5 @@
 module Arelastic
-  module Arity
+  module Arities
     module Binary
       def binary(predicate)
         @predicate = predicate
@@ -18,7 +18,7 @@ module Arelastic
           @value = value
         end
 
-        def as_json(options)
+        def as_elastic
           {
             self.class.predicate => {
               field => convert_to_elastic(value)

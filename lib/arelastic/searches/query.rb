@@ -1,7 +1,7 @@
 module Arelastic
   module Searches
-    class Query < Arelastic::Search
-      unary 'query', expects: Arelastic::Query
+    class Query < Arelastic::Searches::Search
+      unary 'query', expects: Arelastic::Queries::Query
     end
   end
 end

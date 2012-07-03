@@ -1,7 +1,7 @@
 module Arelastic
-  module Arity
+  module Arities
     module Polyadic
-      def unary(operator)
+      def polyadic(operator)
         @operator = operator
         include Methods
 

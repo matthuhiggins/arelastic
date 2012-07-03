@@ -1,6 +1,6 @@
 module Arelastic
   module Filters
-    class Term < Arelastic::Filter
+    class Term < Arelastic::Filters::Filter
       binary 'term'
     end
   end

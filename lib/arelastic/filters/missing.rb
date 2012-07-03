@@ -1,6 +1,6 @@
 module Arelastic
   module Filters
-    class Missing < Arelastic::Filter
+    class Missing < Arelastic::Filters::Filter
       attr_reader :field
 
       def initialize field
@@ -8,7 +8,7 @@ module Arelastic
       end
 
       def as_elastic
-        {"missing" => { "field" : field }}
+        {"missing" => { "field" => field }}
         # "existence" : true defaults to true
         # "null_value" : true defaults to false
       end

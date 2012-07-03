@@ -1,6 +1,6 @@
 module Arelastic
   module Filters
-    class Not < Arelastic::Filter
+    class Not < Arelastic::Filters::Filter
       attr_reader :expr
 
       def initialize expr

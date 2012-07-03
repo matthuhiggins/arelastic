@@ -1,6 +1,6 @@
 module Arelastic
   module Queries
-    class Prefix < Arelastic::Query
+    class Prefix < Arelastic::Queries::Query
       binary 'prefix'
     end
   end

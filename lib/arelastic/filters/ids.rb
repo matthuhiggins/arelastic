@@ -1,6 +1,6 @@
 module Arelastic
   module Filters
-    class Ids < Arelastic::Filter
+    class Ids < Arelastic::Filters::Filter
       attr_reader :values
 
       def initialize values
@@ -8,7 +8,7 @@ module Arelastic
       end
 
       def as_elastic
-        { "ids" => { "values" : values }}
+        { "ids" => { "values" => values }}
       end
     end
   end

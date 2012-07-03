@@ -1,6 +1,6 @@
 module Arelastic
   module Filters
-    class Or < Arelastic::Filter
+    class Or < Arelastic::Filters::Filter
       polyadic 'or'
     end
   end

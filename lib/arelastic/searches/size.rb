@@ -1,6 +1,6 @@
 module Arelastic
   module Searches
-    class Size < Arelastic::Search
+    class Size < Arelastic::Searches::Search
       unary 'size'
     end
   end

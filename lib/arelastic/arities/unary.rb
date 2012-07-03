@@ -1,5 +1,5 @@
 module Arelastic
-  module Arity
+  module Arities
     module Unary
       def unary(field, options = {})
         @field = field
@@ -14,7 +14,7 @@ module Arelastic
 
       module Methods
         def initialize expr
-          # raise "#{expr.inspect} must be an Arelastic::Filter" unless expr.is_a?(Arelastic::Filter)
+          # raise "#{expr.inspect} must be an Arelastic::Filters::Filter" unless expr.is_a?(Arelastic::Filters::Filter)
           @expr = expr
         end
 

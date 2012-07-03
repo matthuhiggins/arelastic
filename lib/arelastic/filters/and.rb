@@ -1,6 +1,6 @@
 module Arelastic
   module Filters
-    class And < Arelastic::Filter
+    class And < Arelastic::Filters::Filter
       polyadic 'and'
     end
   end

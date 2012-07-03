@@ -1,6 +1,6 @@
 module Arelastic
   module Filters
-    class Limit < Arelastic::Filter
+    class Limit < Arelastic::Filters::Filter
       attr_reader :value
 
       def initialize value

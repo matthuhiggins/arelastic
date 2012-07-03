@@ -1,6 +1,6 @@
 module Arelastic
   module Queries
-    class ConstantScore < Arelastic::Query
+    class ConstantScore < Arelastic::Queries::Query
       unary 'constant_score'
     end
   end
