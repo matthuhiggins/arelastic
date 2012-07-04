@@ -89,7 +89,6 @@ module Arelastic
 
       def build_query(query)
         if query.is_a?(String)
-          p "query string! #{query}"
           query = Arelastic::Queries::QueryString.new query
         end
 
