@@ -19,6 +19,7 @@ module Arelastic
 
     def query!(value)
       self.query_value = value
+      self
     end
 
     def query(value)
@@ -27,6 +28,7 @@ module Arelastic
 
     def filter!(*args)
       self.filter_values += args.flatten
+      self
     end
 
     def filter(*args)
@@ -53,6 +55,7 @@ module Arelastic
 
     def facet!(*args)
       self.facet_values = args.flatten
+      self
     end
 
     def facet(*args)
