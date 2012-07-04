@@ -8,7 +8,7 @@ class Relation
     @offset_value = nil
   end
 
-  def query(*args)
+  def query!(*args)
     self.query_values += args.flatten
   end
 
