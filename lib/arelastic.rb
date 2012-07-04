@@ -1,5 +1,6 @@
 require 'arelastic/field'
 require 'arelastic/index'
+require 'arelastic/relation'
 
 require 'arelastic/arities'
 require 'arelastic/nodes'

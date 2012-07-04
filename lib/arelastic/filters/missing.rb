@@ -12,7 +12,8 @@ module Arelastic
       end
 
       def as_elastic
-        {"missing" => { "field" => field }}
+        params = {"field" => field}.update(options)
+        {"missing" => params}
       end
     end
   end

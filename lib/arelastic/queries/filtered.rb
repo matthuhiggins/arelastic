@@ -1,13 +1,14 @@
 module Arelastic
   module Queries
     class Filtered < Arelastic::Queries::Query
-      attr_accessor :grouping
+      attr_accessor :query, :filter
       def initialize(query, filter)
-        @grouping = Arelastic::Nodes::Grouping.new [query, filter]
+        @query = query
+        @filter = filter
       end
 
       def as_elastic
-        { "filtered" => convert_to_elastic(grouping) }
+        { "filtered" => Arelastic::Nodes::Grouping.new([query, filter]).as_elastic }
       end
     end
   end

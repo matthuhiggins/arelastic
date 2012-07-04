@@ -21,7 +21,7 @@ class Arelastic::FieldTest < MiniTest::Spec
     assert_equal expected, field.prefix('blu').as_elastic
   end
 
-  def exists
+  def test_exists
     
   end
 
