@@ -63,31 +63,34 @@ module Arelastic
       build_search.as_elastic
     end
 
-    def build_search
-      searches = [
-        build_query_and_filter(query_value, filter_values),
-        build_limit(limit_value),
-        build_offset(offset_value),
-      ].compact
-
-      Arelastic::Nodes::Grouping.new searches
-    end
-
     private
+      def build_search
+        searches = [
+          build_query_and_filter(query_value, filter_values),
+          build_limit(limit_value),
+          build_offset(offset_value),
+          build_facets(facet_values)
+        ].compact
+
+        Arelastic::Nodes::Grouping.new searches
+      end
+
       def build_query_and_filter(query, filters)
         query = build_query(query)
         filter = build_filter(filters)
-        if query && filters
-          Arelastic::Searches::Query.new(Arelastic::Queries::Filtered.new(query, filter))
+        if query && filter
+          index.filtered(query, filter)
         elsif query
-        elsif filters
-          Arelastic::Searches::Query.new(Arelastic::Queries::ConstantScore.new(filter))
+          query
+        elsif filter
+          index.constant_score(filter)
         end
       end
 
       def build_query(query)
         if query.is_a?(String)
-          query = {query_string: query}
+          p "query string! #{query}"
+          query = Arelastic::Queries::QueryString.new query
         end
 
         if query
@@ -128,6 +131,7 @@ module Arelastic
       end
 
       def build_facets(facets)
+        return nil
         nodes = []
         facets.each do |yay|
           nodes << 'x'

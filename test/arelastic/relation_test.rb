@@ -19,7 +19,18 @@ class Arelastic::RelatonTest < MiniTest::Spec
       }
     }
 
-    assert_equal expected, relation.build_search.as_elastic
+    assert_equal expected, relation.as_elastic
+  end
+
+  def test_query
+    relation = Arelastic::Relation.new
+    relation.query!('foo')
+
+    expected = {
+      "query" => {"query_string"=>"foo"}
+    }
+
+    assert_equal expected, relation.as_elastic
   end
 
   def test_filter_and_query
@@ -44,6 +55,6 @@ class Arelastic::RelatonTest < MiniTest::Spec
       }
     }
 
-    assert_equal expected, relation.build_search.as_elastic
+    assert_equal expected, relation.as_elastic
   end
 end

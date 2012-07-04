@@ -7,8 +7,12 @@ module Arelastic
       end
 
       def as_elastic
+        p "nodes = #{nodes.inspect}"
         result = {}
-        nodes.each { |node| result.merge! convert_to_elastic(node) }
+        nodes.each do |node|
+          p "converting #{node.inspect}"
+          result.merge! convert_to_elastic(node)
+        end
         result
       end
     end
