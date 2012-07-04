@@ -1,3 +1,3 @@
-require 'facets/facet'
+require 'arelastic/facets/facet'
 
-require 'facets/terms'
+require 'arelastic/facets/terms'

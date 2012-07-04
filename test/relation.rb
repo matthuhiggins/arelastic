@@ -12,6 +12,10 @@ class Relation
     @offset_value = nil
   end
 
+  def index
+    @index ||= Arelastic::Index.new
+  end
+
   def query!(*args)
     self.query_values += args.flatten
   end
@@ -54,19 +58,14 @@ class Relation
     clone.facet!(*args)
   end
 
-  def build_query
+  def build_search
     # build_facets facet_values
     build_filters filter_values
   end
 
   private
-    def build_facets(facets)
-      nodes = []
-      facets.each do |yay|
-        nodes << 'x'
-      end
-
-      Arelastic::Searches::Facets.new(nodes) unless nodes.empty?
+    def build_query(queries)
+      
     end
 
     def build_filters(filters)
@@ -78,19 +77,47 @@ class Relation
         end
       end
 
-      Arelastic::Filters::And.new(nodes) unless nodes.empty?
+      unless nodes.empty?
+        Arelastic::Searches::Filter.new Arelastic::Filters::And.new(nodes)
+      end
+    end
+
+    def build_limit(limit_value)
+
+    end
+    
+
+    def build_facets(facets)
+      nodes = []
+      facets.each do |yay|
+        nodes << 'x'
+      end
+
+      Arelastic::Searches::Facets.new(nodes) unless nodes.empty?
     end
 end
 
 require 'helper'
 
 class Arelastic::RelatonTest < MiniTest::Spec
-  def test_relation
+  def test_filter
     relation = Relation.new
     relation.filter!('foo' => 'bar')
-    relation.filter!('faz' => ['baz', 'fum'])
+    relation.filter!(relation.index[:faz].in ['baz', 'fum'])
     
-    expected = {"and"=>[{"term"=>{"foo"=>"bar"}}, {"terms"=>{"faz"=>["baz", "fum"]}}]}
-    assert_equal expected, relation.build_query.as_elastic
+    expected = {
+      "filter" => {
+        "and" => [
+          {"term"   => {"foo" => "bar"}},
+          {"terms"  => {"faz" => ["baz", "fum"]}}
+        ]
+      }
+    }
+
+    assert_equal expected, relation.build_search.as_elastic
+  end
+
+  def test_limit
+    
   end
 end
