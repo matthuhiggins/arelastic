@@ -1,5 +1,9 @@
 class Relation
-  attr_accessor :filter_values, :query_values
+  attr_accessor :query_values,
+                :filter_values,
+                :limit_value,
+                :offset_value,
+                :facet_values
 
   def initialize
     @filter_values = []
@@ -42,11 +46,29 @@ class Relation
     clone.offset!(value)
   end
 
+  def facet!(*args)
+    self.facet_values = args.flatten
+  end
+
+  def facet(*args)
+    clone.facet!(*args)
+  end
+
   def build_query
+    # build_facets facet_values
     build_filters filter_values
   end
 
   private
+    def build_facets(facets)
+      nodes = []
+      facets.each do |yay|
+        nodes << 'x'
+      end
+
+      Arelastic::Searches::Facets.new(nodes) unless nodes.empty?
+    end
+
     def build_filters(filters)
       nodes = filters.grep(Arelastic::Filters::Filter)
 

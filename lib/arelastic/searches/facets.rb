@@ -1,7 +1,14 @@
 module Arelastic
   module Searches
     class Facets < Arelastic::Searches::Search
-      unary 'facets' # not sure if this is oversimplified
+      attr_accessor :grouping
+      def initialize facets
+        @grouping = Arelastic::Nodes::Grouping.new facets
+      end
+
+      def as_elastic
+        { "facets" => convert_to_elastic(grouping) }
+      end
     end
   end
 end
