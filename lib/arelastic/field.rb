@@ -26,7 +26,7 @@ module Arelastic
     end
 
     def gteq other
-      range 'gt' => other
+      range 'gte' => other
     end
 
     def gt other
