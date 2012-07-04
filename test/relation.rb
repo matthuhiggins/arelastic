@@ -17,7 +17,7 @@ class Relation
   end
 
   def filter!(*args)
-    self.filter_values = args.flatten
+    self.filter_values += args.flatten
   end
 
   def filter(*args)
@@ -42,14 +42,13 @@ class Relation
     clone.offset!(value)
   end
 
-  def do_it
+  def build_query
     build_filters filter_values
   end
 
   private
     def build_filters(filters)
       nodes = filters.grep(Arelastic::Filters::Filter)
-      # arelastic.filter(Arelastic::Filters::And.new(nodes)) unless nodes.empty?
 
       (filters - nodes).each do |filter_hash|
         filter_hash.each do |field, terms|
@@ -57,6 +56,19 @@ class Relation
         end
       end
 
-      nodes
+      Arelastic::Filters::And.new(nodes) unless nodes.empty?
     end
+end
+
+require 'helper'
+
+class Arelastic::RelatonTest < MiniTest::Spec
+  def test_relation
+    relation = Relation.new
+    relation.filter!('foo' => 'bar')
+    relation.filter!('faz' => ['baz', 'fum'])
+    
+    expected = {"and"=>[{"term"=>{"foo"=>"bar"}}, {"terms"=>{"faz"=>["baz", "fum"]}}]}
+    assert_equal expected, relation.build_query.as_elastic
+  end
 end
