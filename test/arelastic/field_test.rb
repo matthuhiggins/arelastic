@@ -25,6 +25,11 @@ class Arelastic::FieldTest < MiniTest::Spec
     
   end
 
+  def test_range
+    expected = {"range" => {"color" => {"lt" => 5}}}
+    assert_equal expected, field.lt(5).as_elastic
+  end
+
   private
     def field
       @field ||= Arelastic::Field.new('color')
