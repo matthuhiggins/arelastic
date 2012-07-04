@@ -1,4 +1,4 @@
 require 'bundler/setup'
-Bundler.require(:default)
+Bundler.require
 
 require 'minitest/autorun'

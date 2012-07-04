@@ -25,7 +25,7 @@ class Arelastic::RelatonTest < MiniTest::Spec
   def test_filter_and_query
     relation = Arelastic::Relation.new
     relation.query!('field' => {'name' => 'joe'})
-    relation.filter!(relation.index[:faz].prefix ['baz', 'fum'])
+    relation.filter!(relation.index[:name].prefix "mat")
 
     expected = {
       "query" => {
@@ -37,7 +37,7 @@ class Arelastic::RelatonTest < MiniTest::Spec
           },
           "filter" => {
             "prefix" => {
-              "faz" => ["baz", "fum"]
+              "name" => "mat"
             }
           }
         }

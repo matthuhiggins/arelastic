@@ -59,6 +59,10 @@ module Arelastic
       clone.facet!(*args)
     end
 
+    def as_elastic
+      build_search.as_elastic
+    end
+
     def build_search
       searches = [
         build_query_and_filter(query_value, filter_values),
