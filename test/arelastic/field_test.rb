@@ -16,13 +16,19 @@ class Arelastic::FieldTest < MiniTest::Spec
     assert_equal expected, field.in(['blue']).as_elastic
   end
 
+  def test_not_in
+    expected = {"not" => {"terms" => {"color"=>["blue"]}}}
+    assert_equal expected, field.not_in(['blue']).as_elastic
+  end
+
   def test_prefix
     expected = {"prefix"=>{"color"=>"blu"}}
     assert_equal expected, field.prefix('blu').as_elastic
   end
 
   def test_exists
-    
+    expected = {"exists"=>{"field"=>"color"}}
+    assert_equal expected, field.exists.as_elastic
   end
 
   def test_range

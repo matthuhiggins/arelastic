@@ -1,16 +1,19 @@
 module Arelastic
   class Field < Struct.new :name
-    
     def eq other
       Arelastic::Filters::Term.new name, other
     end
 
     def not_eq other
-      Arelastic::Filters::Not.new Arelastic::Filters::Term.new name, other
+      self.not eq(other)
     end
 
     def in other
       Arelastic::Filters::Terms.new name, other
+    end
+
+    def not_in other
+      self.not self.in(other)
     end
 
     def prefix other
@@ -39,6 +42,10 @@ module Arelastic
 
     def lt other
       range 'lt' => other
+    end
+
+    def not other
+      Arelastic::Filters::Not.new other
     end
 
     private
