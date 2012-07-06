@@ -1,5 +1,5 @@
 module Arelastic
-  class Relation
+  class Scope
     attr_accessor :query_value,
                   :filter_values,
                   :limit_value,
@@ -11,10 +11,11 @@ module Arelastic
       @query_values = []
       @limit_value = nil
       @offset_value = nil
+      @facet_values = []
     end
 
-    def index
-      @index ||= Arelastic::Index.new
+    def search
+      @search ||= Arelastic::Builders::Search.new
     end
 
     def query!(value)
@@ -54,7 +55,7 @@ module Arelastic
     end
 
     def facet!(*args)
-      self.facet_values = args.flatten
+      self.facet_values += args.flatten
       self
     end
 
@@ -82,11 +83,11 @@ module Arelastic
         query = build_query(query)
         filter = build_filter(filters)
         if query && filter
-          index.filtered(query, filter)
+          search.query.filtered(query, filter)
         elsif query
           query
         elsif filter
-          index.constant_score(filter)
+          search.query.constant_score(filter)
         end
       end
 
@@ -133,10 +134,16 @@ module Arelastic
       end
 
       def build_facets(facets)
-        return nil
         nodes = []
-        facets.each do |yay|
-          nodes << 'x'
+
+        facets.each do |facet|
+          if facet.is_a?(Arelastic::Facets::Facet)
+            nodes << facet
+          else
+            facet.each do |name, value|
+              nodes << {name => value}
+            end
+          end
         end
 
         Arelastic::Searches::Facets.new(nodes) unless nodes.empty?
