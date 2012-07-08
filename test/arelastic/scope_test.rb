@@ -60,7 +60,7 @@ class Arelastic::ScopeTest < MiniTest::Spec
 
   def test_facet
     scope = Arelastic::Scope.new
-    scope.facet!(scope.search.facet('popular_tags').terms('tags'))
+    scope.facet!(scope.search.facet['popular_tags'].terms('tags'))
 
     expected = {
       "facets" => {

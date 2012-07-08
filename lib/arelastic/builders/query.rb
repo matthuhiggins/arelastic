@@ -1,12 +1,23 @@
 module Arelastic
   module Builders
     class Query
-      def filtered(query, filter)
-        Arelastic::Searches::Query.new(Arelastic::Queries::Filtered.new(query, filter))
-      end
+      class << self
+        def constant_score(filter_or_query)
+          query Arelastic::Queries::ConstantScore.new(filter_or_query)
+        end
 
-      def constant_score(filter_or_query)
-        Arelastic::Searches::Query.new(Arelastic::Queries::ConstantScore.new(filter_or_query))
+        def filtered(query, filter)
+          query Arelastic::Queries::Filtered.new(query, filter)
+        end
+
+        def match_all
+          query Arelastic::Queries::MatchAll.new
+        end
+
+        private
+          def query value
+            Arelastic::Searches::Query.new value
+          end
       end
     end
   end

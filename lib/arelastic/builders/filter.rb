@@ -1,6 +1,12 @@
 module Arelastic
   module Builders
     class Filter < Struct.new :field
+      class << self
+        def [](field)
+          new(field)
+        end
+      end
+
       def eq other
         Arelastic::Filters::Term.new field, other
       end

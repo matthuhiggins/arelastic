@@ -38,6 +38,6 @@ class Arelastic::Builders::FilterTest < MiniTest::Spec
 
   private
     def builder
-      @builder ||= Arelastic::Builders::Filter.new('color')
+      @builder ||= Arelastic::Builders::Filter['color']
     end
 end

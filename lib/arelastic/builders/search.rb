@@ -1,18 +1,20 @@
 module Arelastic
   module Builders
     class Search
-      def filter(field)
-        Arelastic::Builders::Filter.new(field.to_s)
+      def filter
+        Arelastic::Builders::Filter
       end
 
-      alias :[] :filter
+      def [](field)
+        filter[field]
+      end
 
-      def facet(name)
-        Arelastic::Builders::Facet.new(name.to_s)
+      def facet
+        Arelastic::Builders::Facet
       end
 
       def query
-        @query_builder ||= Arelastic::Builders::Query.new
+        Arelastic::Builders::Query
       end
     end
   end
