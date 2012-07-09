@@ -82,7 +82,7 @@ class Arelastic::ScopeTest < MiniTest::Spec
     assert_equal expected, scope.as_elastic['size']
   end
 
-  def test_limit
+  def test_offset
     scope = Arelastic::Scope.new
     scope.offset!(42)
 
