@@ -28,7 +28,7 @@ class Arelastic::ScopeTest < MiniTest::Spec
   def test_query_with_only_query
     scope.query!('foo')
 
-    expected = {"query_string"=>"foo"}
+    expected = {"query_string" => {"query" => "foo"}}
 
     assert_equal expected, scope.as_elastic['query']
   end
