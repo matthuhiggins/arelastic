@@ -1,61 +1,62 @@
 require 'helper'
 
 class Arelastic::ScopeTest < MiniTest::Spec
-  def test_filter
+  def test_query_with_no_queries
+    scope = Arelastic::Scope.new
+    expected = {"match_all" => {}}
+
+    assert_equal expected, scope.as_elastic['query']
+  end
+
+  def test_query_with_only_filters
     scope = Arelastic::Scope.new
     scope.filter!('foo' => 'bar')
     scope.filter!(scope.search['faz'].in ['baz', 'fum'])
     
     expected = {
-      "query" => {
-        "constant_score" => {
-          "filter" => {
-            "and" => [
-              {"term"   => {"foo" => "bar"}},
-              {"terms"  => {"faz" => ["baz", "fum"]}}
-            ]
-          }
+      "constant_score" => {
+        "filter" => {
+          "and" => [
+            {"term"   => {"foo" => "bar"}},
+            {"terms"  => {"faz" => ["baz", "fum"]}}
+          ]
         }
       }
     }
 
-    assert_equal expected, scope.as_elastic
+    assert_equal expected, scope.as_elastic['query']
   end
 
-  def test_query
+  def test_query_with_only_query
     scope = Arelastic::Scope.new
     scope.query!('foo')
 
-    expected = {
-      "query" => {"query_string"=>"foo"}
-    }
+    expected = {"query_string"=>"foo"}
 
-    assert_equal expected, scope.as_elastic
+    assert_equal expected, scope.as_elastic['query']
   end
 
-  def test_filter_and_query
+  def test_query_with_both_filter_and_query
     scope = Arelastic::Scope.new
     scope.query!('field' => {'name' => 'joe'})
     scope.filter!(scope.search['name'].prefix "mat")
 
     expected = {
-      "query" => {
-        "filtered" => {
-          "query" => {
-            "field" => {
-              "name"=>"joe"
-            },
+      "filtered" => {
+        "query" => {
+          "field" => {
+            "name"=>"joe"
           },
-          "filter" => {
-            "prefix" => {
-              "name" => "mat"
-            }
+        },
+        "filter" => {
+          "prefix" => {
+            "name" => "mat"
           }
         }
       }
     }
 
-    assert_equal expected, scope.as_elastic
+    assert_equal expected, scope.as_elastic['query']
   end
 
   def test_facet
@@ -63,15 +64,29 @@ class Arelastic::ScopeTest < MiniTest::Spec
     scope.facet!(scope.search.facet['popular_tags'].terms('tags'))
 
     expected = {
-      "facets" => {
-        "popular_tags" => {
-          "terms" => {
-            "field"=>"tags"
-          }
+      "popular_tags" => {
+        "terms" => {
+          "field"=>"tags"
         }
       }
     }
 
-    assert_equal expected, scope.as_elastic
+    assert_equal expected, scope.as_elastic['facets']
+  end
+
+  def test_limit
+    scope = Arelastic::Scope.new
+    scope.limit!(5)
+
+    expected = 5
+    assert_equal expected, scope.as_elastic['size']
+  end
+
+  def test_limit
+    scope = Arelastic::Scope.new
+    scope.offset!(42)
+
+    expected = 42
+    assert_equal expected, scope.as_elastic['from']
   end
 end

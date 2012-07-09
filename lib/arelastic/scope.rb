@@ -63,6 +63,14 @@ module Arelastic
       clone.facet!(*args)
     end
 
+    def sort!(*args)
+      
+    end
+
+    def sort(*args)
+      
+    end
+
     def as_elastic
       build_search.as_elastic
     end
@@ -88,6 +96,8 @@ module Arelastic
           query
         elsif filter
           search.query.constant_score(filter)
+        else
+          search.query.match_all
         end
       end
 
