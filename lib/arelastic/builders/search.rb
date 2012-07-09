@@ -16,6 +16,10 @@ module Arelastic
       def query
         Arelastic::Builders::Query
       end
+
+      def sort
+        Arelastic::Builders::Sort
+      end
     end
   end
 end

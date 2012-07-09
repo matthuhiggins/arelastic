@@ -4,7 +4,8 @@ module Arelastic
                   :filter_values,
                   :limit_value,
                   :offset_value,
-                  :facet_values
+                  :facet_values,
+                  :sort_values
 
     def initialize
       @filter_values = []
@@ -12,6 +13,7 @@ module Arelastic
       @limit_value = nil
       @offset_value = nil
       @facet_values = []
+      @sort_values = []
     end
 
     def search
@@ -24,7 +26,7 @@ module Arelastic
     end
 
     def query(value)
-      clone.query!(value)
+      clone.query! value
     end
 
     def filter!(*args)
@@ -51,7 +53,7 @@ module Arelastic
     end
 
     def offset(value)
-      clone.offset!(value)
+      clone.offset! value
     end
 
     def facet!(*args)
@@ -60,15 +62,15 @@ module Arelastic
     end
 
     def facet(*args)
-      clone.facet!(*args)
+      clone.facet! *args
     end
 
     def sort!(*args)
-      
+      self.sort_values += args.flatten
     end
 
     def sort(*args)
-      
+      clone.sort! *args
     end
 
     def as_elastic
@@ -81,7 +83,8 @@ module Arelastic
           build_query_and_filter(query_value, filter_values),
           build_limit(limit_value),
           build_offset(offset_value),
-          build_facets(facet_values)
+          build_facets(facet_values),
+          build_sorts(sort_values)
         ].compact
 
         Arelastic::Nodes::Grouping.new searches
@@ -157,6 +160,10 @@ module Arelastic
         end
 
         Arelastic::Searches::Facets.new(nodes) unless nodes.empty?
+      end
+
+      def build_sorts(sorts)
+        Arelastic::Searches::Sort.new(sorts) unless sorts.empty?
       end
   end
 end

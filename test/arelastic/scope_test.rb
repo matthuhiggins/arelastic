@@ -2,14 +2,12 @@ require 'helper'
 
 class Arelastic::ScopeTest < MiniTest::Spec
   def test_query_with_no_queries
-    scope = Arelastic::Scope.new
     expected = {"match_all" => {}}
 
     assert_equal expected, scope.as_elastic['query']
   end
 
   def test_query_with_only_filters
-    scope = Arelastic::Scope.new
     scope.filter!('foo' => 'bar')
     scope.filter!(scope.search['faz'].in ['baz', 'fum'])
     
@@ -28,7 +26,6 @@ class Arelastic::ScopeTest < MiniTest::Spec
   end
 
   def test_query_with_only_query
-    scope = Arelastic::Scope.new
     scope.query!('foo')
 
     expected = {"query_string"=>"foo"}
@@ -37,7 +34,6 @@ class Arelastic::ScopeTest < MiniTest::Spec
   end
 
   def test_query_with_both_filter_and_query
-    scope = Arelastic::Scope.new
     scope.query!('field' => {'name' => 'joe'})
     scope.filter!(scope.search['name'].prefix "mat")
 
@@ -60,7 +56,6 @@ class Arelastic::ScopeTest < MiniTest::Spec
   end
 
   def test_facet
-    scope = Arelastic::Scope.new
     scope.facet!(scope.search.facet['popular_tags'].terms('tags'))
 
     expected = {
@@ -75,7 +70,6 @@ class Arelastic::ScopeTest < MiniTest::Spec
   end
 
   def test_limit
-    scope = Arelastic::Scope.new
     scope.limit!(5)
 
     expected = 5
@@ -83,10 +77,26 @@ class Arelastic::ScopeTest < MiniTest::Spec
   end
 
   def test_offset
-    scope = Arelastic::Scope.new
     scope.offset!(42)
 
     expected = 42
     assert_equal expected, scope.as_elastic['from']
   end
+
+  def test_sort
+    scope.sort! 'foo'
+    scope.sort! 'bar' => 'desc'
+
+    expected = [
+      'foo',
+      'bar' => 'desc'
+    ]
+
+    assert_equal expected, scope.as_elastic['sort']
+  end
+
+  private
+    def scope
+      @scope ||= Arelastic::Scope.new
+    end
 end
