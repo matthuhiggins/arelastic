@@ -6,14 +6,14 @@ Gem::Specification.new do |s|
   s.summary = 'Elastic Search query builder'
   s.description = 'Build Elastic Search queries with objects'
 
-  s.required_ruby_version     = '>= 1.9.2'
-  s.required_rubygems_version = '>= 1.3.5'
+  s.required_ruby_version     = '>= 1.9.3'
+  s.required_rubygems_version = ">= 1.8.11"
+  s.license     = 'MIT'
 
   s.author            = 'Matthew Higgins'
   s.email             = 'developer@matthewhiggins.com'
   s.homepage          = 'http://github.com/matthuhiggins/arelastic'
 
   s.extra_rdoc_files = ['README.rdoc']
-  s.files = %w(MIT-LICENSE Rakefile README.rdoc) + Dir['{lib,test}/**/*.rb']
-  # s.require_path = 'lib'
+  s.files = Dir['{lib,test}/**/*.rb']
 end

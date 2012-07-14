@@ -6,4 +6,3 @@ require 'arelastic/queries'
 require 'arelastic/searches'
 
 require 'arelastic/builders'
-require 'arelastic/scope'
