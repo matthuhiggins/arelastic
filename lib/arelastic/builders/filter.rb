@@ -5,6 +5,10 @@ module Arelastic
         def [](field)
           new(field)
         end
+
+        def ids(*ids)
+          Arelastic::Filters::Ids.new ids.flatten
+        end
       end
 
       def eq other

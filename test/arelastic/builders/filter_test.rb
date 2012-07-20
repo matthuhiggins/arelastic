@@ -1,6 +1,11 @@
 require 'helper'
 
 class Arelastic::Builders::FilterTest < MiniTest::Spec
+  def test_ids
+    expected = {"ids" => {"values"=>["5", "6"]}}
+    assert_equal expected, Arelastic::Builders::Filter.ids('5', '6').as_elastic
+  end
+
   def test_eq
     expected = {"term"=>{"color"=>"blue"}}
     assert_equal expected, builder.eq('blue').as_elastic
@@ -22,12 +27,12 @@ class Arelastic::Builders::FilterTest < MiniTest::Spec
   end
 
   def test_prefix
-    expected = {"prefix"=>{"color"=>"blu"}}
+    expected = {"prefix" => {"color" => "blu"}}
     assert_equal expected, builder.prefix('blu').as_elastic
   end
 
   def test_exists
-    expected = {"exists"=>{"field"=>"color"}}
+    expected = {"exists" => {"field"=>"color"}}
     assert_equal expected, builder.exists.as_elastic
   end
 
