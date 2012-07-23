@@ -8,6 +8,10 @@ module Arelastic
       def convert_to_elastic(expr)
         expr.respond_to?(:as_elastic) ? expr.as_elastic : expr
       end
+
+      def ==(other)
+        as_elastic == other.as_elastic
+      end
     end
   end
 end

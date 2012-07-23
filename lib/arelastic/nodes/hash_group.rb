@@ -1,6 +1,6 @@
 module Arelastic
   module Nodes
-    class Grouping < Arelastic::Nodes::Node
+    class HashGroup < Arelastic::Nodes::Node
       attr_accessor :nodes
       def initialize nodes
         @nodes = nodes

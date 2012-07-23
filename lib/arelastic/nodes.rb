@@ -1,3 +1,2 @@
 require 'arelastic/nodes/node'
-
-require 'arelastic/nodes/grouping'
+require 'arelastic/nodes/hash_group'
