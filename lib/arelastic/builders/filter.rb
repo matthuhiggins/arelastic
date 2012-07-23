@@ -6,7 +6,7 @@ module Arelastic
           new(field)
         end
 
-        def ids(*ids)
+        def ids *ids
           Arelastic::Filters::Ids.new ids.flatten
         end
       end

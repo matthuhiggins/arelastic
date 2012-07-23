@@ -1,7 +1,10 @@
 require 'arelastic/queries/query'
 
 require 'arelastic/queries/constant_score'
+require 'arelastic/queries/field'
 require 'arelastic/queries/filtered'
 require 'arelastic/queries/match_all'
 require 'arelastic/queries/prefix'
 require 'arelastic/queries/query_string'
+require 'arelastic/queries/terms'
+require 'arelastic/queries/term'

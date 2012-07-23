@@ -1,7 +1,10 @@
 module Arelastic
   module Builders
-    class Query
+    class Query < Struct.new :name
       class << self
+        def [](field)
+          new(field)
+        end
         def constant_score(filter_or_query)
           query Arelastic::Queries::ConstantScore.new(filter_or_query)
         end
@@ -18,6 +21,18 @@ module Arelastic
           def query value
             Arelastic::Searches::Query.new value
           end
+      end
+
+      def field other
+        Arelastic::Queries::Field.new name, other
+      end
+
+      def term other
+        Arelastic::Queries::Term.new name, other
+      end
+
+      def terms other
+        Arelastic::Queries::Terms.new name, other
       end
     end
   end
