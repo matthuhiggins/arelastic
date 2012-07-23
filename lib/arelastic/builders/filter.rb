@@ -20,7 +20,16 @@ module Arelastic
       end
 
       def in other
-        Arelastic::Filters::Terms.new field, other
+        case other
+        when Range
+          if other.exclude_end?
+            range 'gte' => other.begin, 'lt' => other.end
+          else
+            range 'gte' => other.begin, 'lte' => other.end
+          end
+        else
+          Arelastic::Filters::Terms.new field, other
+        end
       end
 
       def not_in other
