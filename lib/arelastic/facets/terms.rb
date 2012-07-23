@@ -1,23 +1,19 @@
-# "terms" : {
-#     "field" : "tag",
-#     "size" : 10,
-#     "order" : "term"
-# }module Arelastic
 module Arelastic
   module Facets
     class Terms < Arelastic::Facets::Facet
-      attr_accessor :name, :field
-      def initialize(name, field, options)
+      attr_accessor :name, :field, :options
+      def initialize name, field, options = {}
         @name = name
         @field = field
+        @options = options
       end
 
       def as_elastic
+        params = {"field" => field}.update(options)
+
         {
           name => {
-            "terms" => {
-              "field" => field
-            }
+            "terms" => params
           }
         }
       end
