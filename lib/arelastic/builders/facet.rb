@@ -7,12 +7,12 @@ module Arelastic
         end
       end
 
-      def terms(field, options = {})
-        Arelastic::Facets::Terms.new(name, field, options)
+      def terms field, options = {}
+        Arelastic::Facets::Terms.new name, field, options
       end
 
-      def range
-        
+      def histogram options
+        Arelastic::Facets::Histogram.new name, options
       end
     end
   end
