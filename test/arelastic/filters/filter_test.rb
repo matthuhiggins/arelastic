@@ -18,4 +18,13 @@ class Arelastic::FilterTest < MiniTest::Spec
     assert and_filter.is_a?(Arelastic::Filters::Or)
     assert_equal [filter, filter], and_filter.children
   end
+
+  def test_negate
+    filter = Arelastic::Filters::Term.new 'foo', 'bar'
+
+    negated_filter = filter.negate
+
+    assert negated_filter.is_a?(Arelastic::Filters::Not)
+    assert_equal filter, negated_filter.expr
+  end
 end

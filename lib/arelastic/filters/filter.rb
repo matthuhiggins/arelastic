@@ -8,6 +8,10 @@ module Arelastic
       def and other
         Arelastic::Filters::And.new [self, other]
       end
+
+      def negate
+        Arelastic::Filters::Not.new self
+      end
     end
   end
 end
