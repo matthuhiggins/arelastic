@@ -9,6 +9,10 @@ module Arelastic
         def ids *ids
           Arelastic::Filters::Ids.new ids.flatten
         end
+
+        def not expr
+          Arelastic::Filters::Not.new expr
+        end
       end
 
       def eq other
@@ -16,7 +20,7 @@ module Arelastic
       end
 
       def not_eq other
-        self.not eq(other)
+        self.class.not eq(other)
       end
 
       def in other
@@ -33,7 +37,7 @@ module Arelastic
       end
 
       def not_in other
-        self.not self.in(other)
+        self.class.not self.in(other)
       end
 
       def prefix other
@@ -64,8 +68,8 @@ module Arelastic
         range 'lt' => other
       end
 
-      def not other
-        Arelastic::Filters::Not.new other
+      def distance distance, location, options = {}
+        Arelastic::Filters::GeoDistance.new(field, distance, location, options)
       end
 
       private

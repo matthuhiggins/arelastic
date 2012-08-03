@@ -40,13 +40,18 @@ class Arelastic::Builders::FilterTest < MiniTest::Spec
   end
 
   def test_exists
-    expected = {"exists" => {"field"=>"color"}}
+    expected = {"exists" => {"field" => "color"}}
     assert_equal expected, builder.exists.as_elastic
   end
 
   def test_range
     expected = {"range" => {"color" => {"lt" => 5}}}
     assert_equal expected, builder.lt(5).as_elastic
+  end
+
+  def test_distance
+    expected = {"geo_distance" => {"distance" => "10km", "color" => [10, 11]}}
+    assert_equal expected, builder.distance('10km', [10, 11]).as_elastic
   end
 
   private
