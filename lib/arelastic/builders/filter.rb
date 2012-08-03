@@ -68,8 +68,8 @@ module Arelastic
         range 'lt' => other
       end
 
-      def distance distance, location, options = {}
-        Arelastic::Filters::GeoDistance.new(field, distance, location, options)
+      def distance location, distance, options = {}
+        Arelastic::Filters::GeoDistance.new(field, location, distance, options)
       end
 
       private
