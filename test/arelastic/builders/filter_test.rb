@@ -52,6 +52,9 @@ class Arelastic::Builders::FilterTest < MiniTest::Spec
   def test_distance
     expected = {"geo_distance" => {"distance" => "10km", "color" => [10, 11]}}
     assert_equal expected, builder.distance('10km', [10, 11]).as_elastic
+
+    expected = {"geo_distance" => {"distance" => "10km", "color" => [10, 11], "distance_type" => "plane"}}
+    assert_equal expected, builder.distance('10km', [10, 11], 'distance_type' => 'plane').as_elastic
   end
 
   private
