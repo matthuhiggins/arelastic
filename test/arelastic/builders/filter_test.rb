@@ -17,8 +17,13 @@ class Arelastic::Builders::FilterTest < MiniTest::Spec
   end
 
   def test_in
-    expected = {"terms" => {"color"=>["blue"]}}
+    expected = {"terms" => {"color" => ["blue"]}}
     assert_equal expected, builder.in(['blue']).as_elastic
+  end
+
+  def test_in_with_options
+    expected = {"terms" => {"color" => ["blue"], "execution" => "bool"}}
+    assert_equal expected, builder.in(['blue'], "execution" => "bool").as_elastic
   end
 
   def test_in_with_range

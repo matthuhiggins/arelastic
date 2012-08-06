@@ -23,7 +23,7 @@ module Arelastic
         self.class.not eq(other)
       end
 
-      def in other
+      def in other, options = {}
         case other
         when Range
           if other.exclude_end?
@@ -32,12 +32,12 @@ module Arelastic
             range 'gte' => other.begin, 'lte' => other.end
           end
         else
-          Arelastic::Filters::Terms.new field, other
+          Arelastic::Filters::Terms.new field, other, options
         end
       end
 
-      def not_in other
-        self.class.not self.in(other)
+      def not_in other, options = {}
+        self.class.not self.in(other, options)
       end
 
       def prefix other
