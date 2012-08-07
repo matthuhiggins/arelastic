@@ -10,6 +10,10 @@ module Arelastic
       def asc
         
       end
+
+      def desc
+        
+      end
     end
   end
 end
