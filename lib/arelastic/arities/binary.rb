@@ -9,21 +9,20 @@ module Arelastic
           attr_reader :predicate
         end
 
-        attr_reader :field, :value
+        attr_reader :field, :value, :options
       end
 
       module Methods
-        def initialize field, value
+        def initialize field, value, options = {}
           @field = field
           @value = value
+          @options = options
         end
 
         def as_elastic
-          {
-            self.class.predicate => {
-              field => convert_to_elastic(value)
-            }
-          }
+          params = {field => convert_to_elastic(value)}.update(options)
+
+          { self.class.predicate => params }
         end
       end
     end
