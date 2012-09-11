@@ -22,6 +22,10 @@ class Arelastic::Builders::QueryTest < MiniTest::Spec
     assert_equal expected, query.as_elastic
   end
 
+  def test_multi_match
+    Arelastic::Builders::Query.multi_match 'blue', ['color', 'description']
+  end
+
   def test_field
     query = Arelastic::Builders::Query['user'].field 'kimchy'
     expected = { "field" => { "user" => "kimchy" } }
@@ -36,9 +40,16 @@ class Arelastic::Builders::QueryTest < MiniTest::Spec
     assert_equal expected, query.as_elastic
   end
 
-  def test_term
+  def test_terms
     query = Arelastic::Builders::Query['tags'].terms ['blue', 'pill']
     expected = {"terms" => { "tags" => ["blue", "pill"] }}
+    
+    assert_equal expected, query.as_elastic
+  end
+
+  def test_match
+    query = Arelastic::Builders::Query['message'].match "hello"
+    expected = {"match" => { "message" => "hello" }}
     
     assert_equal expected, query.as_elastic
   end

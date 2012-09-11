@@ -17,6 +17,10 @@ module Arelastic
           query Arelastic::Queries::MatchAll.new
         end
 
+        def multi_match other, fields
+          # Arelastic::Queries::MultiMatch.new other, fields
+        end
+
         private
           def query value
             Arelastic::Searches::Query.new value
@@ -33,6 +37,10 @@ module Arelastic
 
       def terms other
         Arelastic::Queries::Terms.new name, other
+      end
+
+      def match other
+        Arelastic::Queries::Match.new name, other
       end
     end
   end
