@@ -5,6 +5,7 @@ module Arelastic
         def [](field)
           new(field)
         end
+
         def constant_score(filter_or_query)
           query Arelastic::Queries::ConstantScore.new(filter_or_query)
         end
