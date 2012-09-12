@@ -49,17 +49,25 @@ class Arelastic::Builders::FilterTest < MiniTest::Spec
     assert_equal expected, builder.exists.as_elastic
   end
 
+  def test_present
+    expected = {"and" => [{"exists" => {"field"=>"color"}}, {"not" => {"term"=>{"color"=>""}}}]}
+    assert_equal expected, builder.present.as_elastic
+  end
+
+  def test_missing
+    expected = {"missing" => {"field" => "color"}}
+    assert_equal expected, builder.missing.as_elastic
+  end
+
+  def test_blank
+    expected = {"or" => [{"missing" => {"field"=>"color"}}, {"term" => {"color"=>""}}]}
+    assert_equal expected, builder.blank.as_elastic
+  end
+  
+
   def test_range
     expected = {"range" => {"color" => {"lt" => 5}}}
     assert_equal expected, builder.lt(5).as_elastic
-  end
-
-  def test_distance
-    expected = {"geo_distance" => {"distance" => "10km", "color" => [10, 11]}}
-    assert_equal expected, builder.distance([10, 11], '10km').as_elastic
-
-    expected = {"geo_distance" => {"distance" => "10km", "color" => [10, 11], "distance_type" => "plane"}}
-    assert_equal expected, builder.distance([10, 11], '10km', 'distance_type' => 'plane').as_elastic
   end
 
   private
