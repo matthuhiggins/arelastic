@@ -1,6 +1,6 @@
 module Arelastic
   module Filters
-    class MatchAll
+    class MatchAll < Arelastic::Filters::Filter
       def as_elastic
         {"match_all" => {}}
       end
