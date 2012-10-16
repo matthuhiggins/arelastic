@@ -9,8 +9,8 @@ class Arelastic::Builders::QueryTest < MiniTest::Spec
   end
 
   def test_filtered
-    query = Arelastic::Builders::Query.filtered({"query" => "foo"}, {"filter" => "bar"})
-    expected = {"query" => {"filtered" => {"query" => "foo", "filter" => "bar"}}}
+    query = Arelastic::Builders::Query.filtered({"query_string" => "foo"}, {"term" => "bar"})
+    expected = {"query" => {"filtered" => {"query" => {"query_string" => "foo"}, "filter" => {"term" => "bar"}}}}
 
     assert_equal expected, query.as_elastic
   end

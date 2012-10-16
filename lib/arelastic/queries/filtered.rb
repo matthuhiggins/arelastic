@@ -8,7 +8,12 @@ module Arelastic
       end
 
       def as_elastic
-        { "filtered" => Arelastic::Nodes::HashGroup.new([query, filter]).as_elastic }
+        {
+          "filtered" => {
+            "query"   => convert_to_elastic(query),
+            "filter"  => convert_to_elastic(filter)
+          }
+        }
       end
     end
   end
