@@ -49,21 +49,10 @@ class Arelastic::Builders::FilterTest < MiniTest::Spec
     assert_equal expected, builder.exists.as_elastic
   end
 
-  def test_present
-    expected = {"and" => [{"exists" => {"field"=>"color"}}, {"not" => {"term"=>{"color"=>""}}}]}
-    assert_equal expected, builder.present.as_elastic
-  end
-
   def test_missing
     expected = {"missing" => {"field" => "color"}}
     assert_equal expected, builder.missing.as_elastic
   end
-
-  def test_blank
-    expected = {"or" => [{"missing" => {"field"=>"color"}}, {"term" => {"color"=>""}}]}
-    assert_equal expected, builder.blank.as_elastic
-  end
-  
 
   def test_range
     expected = {"range" => {"color" => {"lt" => 5}}}

@@ -48,16 +48,8 @@ module Arelastic
         Arelastic::Filters::Exists.new field
       end
 
-      def present
-        exists.and(not_eq(''))       
-      end
-
       def missing(options = {})
         Arelastic::Filters::Missing.new field, options
-      end
-
-      def blank
-        missing.or(eq(''))
       end
 
       def gteq other
