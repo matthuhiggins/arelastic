@@ -6,4 +6,10 @@ class Arelastic::Filters::QueryTest < MiniTest::Spec
 
     assert_equal expected, Arelastic::Filters::Query.new(Arelastic::Queries::Match.new('message', 'this is a test')).as_elastic
   end
+
+  def test_with_string
+    expected = {"query" => { "query_string" => "blue dog"}}
+
+    assert_equal expected, Arelastic::Filters::Query.new("blue dog").as_elastic
+  end
 end
