@@ -6,6 +6,11 @@ class Arelastic::Builders::FilterTest < MiniTest::Spec
     assert_equal expected, Arelastic::Builders::Filter.ids('5', '6').as_elastic
   end
 
+  def test_not
+    expected = {"not" => {"terms" => {"color" => "blue"}}}
+    assert_equal expected, Arelastic::Builders::Filter.not({"terms" => {"color" => "blue"}}).as_elastic    
+  end
+
   def test_eq
     expected = {"term"=>{"color"=>"blue"}}
     assert_equal expected, builder.eq('blue').as_elastic
