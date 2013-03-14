@@ -3,7 +3,7 @@ module Arelastic
     class Query < Arelastic::Filters::Filter
       attr_reader :expr
       def initialize(expr)
-        @expr = expr.is_a?(String) ? {'query_string' => expr} : expr
+        @expr = expr.is_a?(String) ? {'query_string' => {'query' => expr}} : expr
       end
 
       def as_elastic

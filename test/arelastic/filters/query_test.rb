@@ -8,7 +8,7 @@ class Arelastic::Filters::QueryTest < MiniTest::Spec
   end
 
   def test_with_string
-    expected = {"query" => { "query_string" => "blue dog"}}
+    expected = {'query' => { 'query_string' => {'query' => 'blue dog'}}}
 
     assert_equal expected, Arelastic::Filters::Query.new("blue dog").as_elastic
   end
