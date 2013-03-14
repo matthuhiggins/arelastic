@@ -1,6 +1,6 @@
 module Arelastic
   module Mappings
-    class Object < Arelastic::Mappings::Mapping
+    class Object < Arelastic::Mappings::Type
       for_type 'object'
     end
   end

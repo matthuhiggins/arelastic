@@ -1,6 +1,6 @@
 module Arelastic
   module Mappings
-    class MultiField < Arelastic::Mappings::Mapping
+    class MultiField < Arelastic::Mappings::Type
       for_type 'multi_field'
     end
   end
