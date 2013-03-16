@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Arities::UnaryTest < MiniTest::Spec
+class Arelastic::Arities::UnaryTest < MiniTest::Unit::TestCase
   def test_unary
     node = Class.new(Arelastic::Nodes::Node) do
       unary 'unicorn'

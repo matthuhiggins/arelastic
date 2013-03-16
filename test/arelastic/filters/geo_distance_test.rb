@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Filters::GeoDistanceTest < MiniTest::Spec
+class Arelastic::Filters::GeoDistanceTest < MiniTest::Unit::TestCase
   def test_as_elastic
     expected = {
       "geo_distance" => {

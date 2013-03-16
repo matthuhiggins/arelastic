@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Arities::PolyadicTest < MiniTest::Spec
+class Arelastic::Arities::PolyadicTest < MiniTest::Unit::TestCase
   def test_polyadic
     expr = Struct.new(:as_elastic)
     node = Class.new(Arelastic::Nodes::Node) do

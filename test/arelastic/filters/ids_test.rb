@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Filters::IdsTest < MiniTest::Spec
+class Arelastic::Filters::IdsTest < MiniTest::Unit::TestCase
   def test_as_elastic
     expected = {"ids" => {"values" => ["foo", "bar"]}}
 

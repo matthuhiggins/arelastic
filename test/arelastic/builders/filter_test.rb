@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Builders::FilterTest < MiniTest::Spec
+class Arelastic::Builders::FilterTest < MiniTest::Unit::TestCase
   def test_ids
     expected = {"ids" => {"values"=>["5", "6"]}}
     assert_equal expected, Arelastic::Builders::Filter.ids('5', '6').as_elastic

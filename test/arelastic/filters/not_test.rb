@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Filters::NotTest < MiniTest::Spec
+class Arelastic::Filters::NotTest < MiniTest::Unit::TestCase
   def test_as_elastic
     expected = {"not" => { "foo" => "bar" }}
 

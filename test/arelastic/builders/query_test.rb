@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Builders::QueryTest < MiniTest::Spec
+class Arelastic::Builders::QueryTest < MiniTest::Unit::TestCase
   def test_constant_score
     query = Arelastic::Builders::Query.constant_score({"foo" => "bar"})
     expected = {"query" => {"constant_score" => {"foo" => "bar"}}}

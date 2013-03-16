@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Filters::ExistsTest < MiniTest::Spec
+class Arelastic::Filters::ExistsTest < MiniTest::Unit::TestCase
   def test_as_elastic
     expected = {"exists" => { "field" => "color" }}
 

@@ -1,4 +1,4 @@
 require 'helper'
 
-class Arelastic::Builders::SearchTest < MiniTest::Spec
+class Arelastic::Builders::SearchTest < MiniTest::Unit::TestCase
 end
