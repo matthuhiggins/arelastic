@@ -1,4 +1,5 @@
 require 'arelastic/builders/filter'
 require 'arelastic/builders/facet'
+require 'arelastic/builders/mapping'
 require 'arelastic/builders/query'
 require 'arelastic/builders/search'

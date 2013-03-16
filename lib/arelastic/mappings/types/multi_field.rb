@@ -1,14 +1,20 @@
 module Arelastic
   module Mappings
     class MultiField < Arelastic::Mappings::Type
-      for_type 'multi_field'
+      attr_reader :field, :field_mappings
+      def initialize(field, field_mappings)
+        @field = field
+        @field_mappings = field_mappings
+      end
+
+      def as_elastic
+        {
+          field => {
+            'type'    => 'multi_field',
+            'fields'  => field_mappings
+          }
+        }
+      end
     end
   end
 end
-#   "name" : {
-#     "type" : "multi_field",
-#     "fields" : {
-#         "name" : {"type" : "string", "index" : "analyzed"},
-#         "untouched" : {"type" : "string", "index" : "not_analyzed"}
-#     }
-# }
