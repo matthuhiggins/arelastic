@@ -1,0 +1,1 @@
+require 'arelastic/sorts/sort'

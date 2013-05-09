@@ -5,5 +5,6 @@ require 'arelastic/filters'
 require 'arelastic/mappings'
 require 'arelastic/queries'
 require 'arelastic/searches'
+require 'arelastic/sorts'
 
 require 'arelastic/builders'
