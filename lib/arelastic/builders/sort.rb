@@ -7,12 +7,12 @@ module Arelastic
         end
       end
 
-      def asc
-        
+      def asc(options = nil)
+        Arelastic::Sorts::Sort.new(field => 'asc', options)
       end
 
-      def desc
-        
+      def desc(options = nil)
+        Arelastic::Sorts::Sort.new(field => 'asc', options)
       end
     end
   end
