@@ -18,8 +18,8 @@ module Arelastic
           query Arelastic::Queries::MatchAll.new
         end
 
-        def multi_match other, fields
-          # Arelastic::Queries::MultiMatch.new other, fields
+        def multi_match(query, fields, options = {})
+          query Arelastic::Queries::MultiMatch.new query, fields, options
         end
 
         private
