@@ -10,7 +10,11 @@ module Arelastic
       end
 
       def as_elastic
-        {"query_string" => {"query" => query_string}}
+        {
+          "query_string" => {
+            "query" => query_string
+          }.merge(options)
+        }
       end
     end
   end
