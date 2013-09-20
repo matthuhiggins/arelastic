@@ -8,12 +8,9 @@ module Arelastic
       end
 
       def as_elastic
-        {
-          'nested' => {
-            'path'  => path,
-            'query' => convert_to_elastic(expr)
-          }
-        }
+        params = {'path' => path}.update(convert_to_elastic(expr))
+
+        { 'nested' => params }
       end
     end
   end
