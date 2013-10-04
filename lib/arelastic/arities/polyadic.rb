@@ -18,7 +18,7 @@ module Arelastic
         end
 
         def as_elastic
-          {self.class.operator => children.map { |child| convert_to_elastic(child) }}
+          {self.class.operator => convert_to_elastic(children)}
         end
       end
     end

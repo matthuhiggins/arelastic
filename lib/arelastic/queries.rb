@@ -1,5 +1,6 @@
 require 'arelastic/queries/query'
 
+require 'arelastic/queries/bool'
 require 'arelastic/queries/constant_score'
 require 'arelastic/queries/field'
 require 'arelastic/queries/filtered'
