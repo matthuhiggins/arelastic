@@ -27,4 +27,13 @@ class Arelastic::FilterTest < MiniTest::Unit::TestCase
     assert negated_filter.is_a?(Arelastic::Filters::Not)
     assert_equal filter, negated_filter.expr
   end
+
+  def test_nested
+    filter = Arelastic::Filters::Term.new('foo', 'bar').nested('links')
+
+    nested_filter = filter.nested 'links'
+
+    assert nested_filter.is_a?(Arelastic::Filters::Nested)
+    assert_equal filter, nested_filter.expr
+  end
 end
