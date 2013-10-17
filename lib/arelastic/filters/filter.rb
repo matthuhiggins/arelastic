@@ -12,6 +12,10 @@ module Arelastic
       def negate
         Arelastic::Filters::Not.new self
       end
+
+      def nested path
+        Arelastic::Filters::Nested.new path, self
+      end
     end
   end
 end
