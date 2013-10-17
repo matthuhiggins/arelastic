@@ -2,9 +2,14 @@ require 'helper'
 
 class Arelastic::Facets::FacetTest < MiniTest::Unit::TestCase
   def test_nested
-    facet = Arelastic::Facets::Facet.new
+    facet = Class.new(Arelastic::Facets::Facet) do
+      def as_elastic
+        {"name" => {}}
+      end
+    end.new
+
     expected = {
-      "nested" => "links"
+      "name" => {"nested" => "links"}
     }
 
     nested = facet.nested "links"
@@ -19,9 +24,9 @@ class Arelastic::Facets::FacetTest < MiniTest::Unit::TestCase
         "terms" => {
           "field" => "links.name",
           "size"  => 10,
-        }
-      },
-      "nested" => "links"
+        },
+        "nested" => "links"
+      }
     }
 
     nested = facet.nested "links"

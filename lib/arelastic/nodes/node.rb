@@ -13,10 +13,6 @@ module Arelastic
         end
       end
 
-      def as_elastic
-        {}
-      end
-
       def ==(other)
         as_elastic == other.as_elastic
       end
