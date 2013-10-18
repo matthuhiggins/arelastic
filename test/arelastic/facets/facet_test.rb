@@ -3,10 +3,10 @@ require 'helper'
 class Arelastic::Facets::FacetTest < MiniTest::Unit::TestCase
   def test_nested
     facet = Class.new(Arelastic::Facets::Facet) do
-      def as_elastic
-        {"name" => {}}
+      def as_elastic_facet
+        {}
       end
-    end.new
+    end.new 'name'
 
     expected = {
       "name" => {"nested" => "links"}
