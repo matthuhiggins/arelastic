@@ -1,17 +1,16 @@
 module Arelastic
   module Facets
     class Histogram < Arelastic::Facets::Facet
-      attr_accessor :name, :options
+      attr_accessor :options
+
       def initialize name, options
-        @name = name
+        super name
         @options = options
       end
 
-      def as_elastic
+      def as_elastic_facet
         {
-          name => {
-            "histogram" => options
-          }
+          "histogram" => options
         }
       end
     end
