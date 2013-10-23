@@ -29,11 +29,17 @@ class Arelastic::FilterTest < MiniTest::Unit::TestCase
   end
 
   def test_nested
-    filter = Arelastic::Filters::Term.new('foo', 'bar').nested('links')
+    filter = Arelastic::Filters::Term.new('foo', 'bar')
 
     nested_filter = filter.nested 'links'
 
     assert nested_filter.is_a?(Arelastic::Filters::Nested)
-    assert_equal filter, nested_filter.expr
+    expected = {
+      "nested" => {
+        "path" => "links",
+        "filter" => filter.as_elastic
+      }
+    }
+    assert_equal(expected, nested_filter.as_elastic)
   end
 end
