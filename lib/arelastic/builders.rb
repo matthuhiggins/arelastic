@@ -1,3 +1,4 @@
+require 'arelastic/builders/aggregation'
 require 'arelastic/builders/filter'
 require 'arelastic/builders/facet'
 require 'arelastic/builders/mapping'

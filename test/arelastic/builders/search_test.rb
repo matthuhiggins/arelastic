@@ -9,6 +9,10 @@ class Arelastic::Builders::SearchTest < MiniTest::Unit::TestCase
     assert_kind_of Arelastic::Builders::Filter, Arelastic::Builders::Search['poop']
   end
 
+  def test_aggregation
+    assert_equal Arelastic::Builders::Aggregation, Arelastic::Builders::Search.aggregation
+  end
+
   def test_facet
     assert_equal Arelastic::Builders::Facet, Arelastic::Builders::Search.facet
   end

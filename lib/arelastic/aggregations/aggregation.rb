@@ -1,7 +1,7 @@
 module Arelastic
   module Aggregations
     class Aggregation < Arelastic::Nodes::Node
-      attr_accessor :name, :aggs
+      attr_accessor :name, :options, :aggs
 
       def initialize(name, options)
         @name = name
@@ -10,9 +10,9 @@ module Arelastic
 
       def as_elastic
         params = as_elastic_aggregation
-        if aggs.any?
-          params['aggs'] = convert_to_elastic(aggs)
-        end
+        # if aggs.any?
+        #   params['aggs'] = convert_to_elastic(aggs)
+        # end
 
         {name => params}
       end

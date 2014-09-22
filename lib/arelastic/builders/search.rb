@@ -10,6 +10,10 @@ module Arelastic
           filter[field]
         end
 
+        def aggregation
+          Arelastic::Builders::Aggregation
+        end
+
         def facet
           Arelastic::Builders::Facet
         end
