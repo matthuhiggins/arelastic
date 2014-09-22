@@ -1,5 +1,6 @@
 require 'arelastic/searches/search'
 
+require 'arelastic/searches/aggregations'
 require 'arelastic/searches/facets'
 require 'arelastic/searches/filter'
 require 'arelastic/searches/from'

@@ -1,5 +1,6 @@
 require 'arelastic/arities'
 require 'arelastic/nodes'
+require 'arelastic/aggregations'
 require 'arelastic/facets'
 require 'arelastic/filters'
 require 'arelastic/mappings'
