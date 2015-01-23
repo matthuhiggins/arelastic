@@ -10,8 +10,8 @@ module Arelastic
           query Arelastic::Queries::ConstantScore.new(search)
         end
 
-        def filtered(query, filter)
-          query Arelastic::Queries::Filtered.new(query, filter)
+        def filtered(query: nil, filter: nil)
+          query Arelastic::Queries::Filtered.new(query: query, filter: filter)
         end
 
         def match_all

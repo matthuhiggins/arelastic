@@ -9,7 +9,10 @@ class Arelastic::Builders::QueryTest < MiniTest::Unit::TestCase
   end
 
   def test_filtered
-    query = Arelastic::Builders::Query.filtered({"query_string" => "foo"}, {"term" => "bar"})
+    query = Arelastic::Builders::Query.filtered(
+      query: {"query_string" => "foo"},
+      filter: {"term" => "bar"}
+    )
     expected = {"query" => {"filtered" => {"query" => {"query_string" => "foo"}, "filter" => {"term" => "bar"}}}}
 
     assert_equal expected, query.as_elastic
@@ -43,14 +46,14 @@ class Arelastic::Builders::QueryTest < MiniTest::Unit::TestCase
   def test_terms
     query = Arelastic::Builders::Query['tags'].terms ['blue', 'pill']
     expected = {"terms" => { "tags" => ["blue", "pill"] }}
-    
+
     assert_equal expected, query.as_elastic
   end
 
   def test_match
     query = Arelastic::Builders::Query['message'].match "hello"
     expected = {"match" => { "message" => "hello" }}
-    
+
     assert_equal expected, query.as_elastic
   end
 end
