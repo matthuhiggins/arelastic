@@ -15,10 +15,6 @@ module Arelastic
       def as_elastic_aggregation
         raise 'not implemented'
       end
-
-      def nested(name, path)
-        Aggregations::Nested.new name, path, self
-      end
     end
   end
 end

@@ -1,13 +1,18 @@
 module Arelastic
   module Searches
     class Aggregations < Arelastic::Searches::Search
-      attr_accessor :grouping
+      attr_accessor :aggregations
       def initialize *aggregations
-        @grouping = Arelastic::Nodes::HashGroup.new aggregations.flatten
+        @aggregations = aggregations.flatten
       end
 
       def as_elastic
-        { "aggs" => convert_to_elastic(grouping) }
+        grouping = Arelastic::Nodes::HashGroup.new aggregations.flatten
+        { "aggs" => grouping.as_elastic }
+      end
+
+      def nested(name, path)
+        Arelastic::Aggregations::Nested.new name, path, aggregations
       end
     end
   end
