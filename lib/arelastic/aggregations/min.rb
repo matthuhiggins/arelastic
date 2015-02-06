@@ -4,7 +4,7 @@ module Arelastic
       attr_accessor :options
 
       def initialize name, options
-        # @field = field
+        super name
         @options = options
       end
 
