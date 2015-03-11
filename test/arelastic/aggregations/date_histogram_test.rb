@@ -8,7 +8,7 @@ class Arelastic::Aggregations::DateHistogramTest < Minitest::Test
       "foo" => {
         "date_histogram" => {
           "field" => "birthdate",
-          "interval"=>"month"
+          "interval" => "month"
         }
       }
     }

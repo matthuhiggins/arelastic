@@ -1,15 +1,8 @@
 module Arelastic
   module Aggregations
-    class Min < Arelastic::Aggs::Aggregation
-      attr_accessor :options
-
-      def initialize name, options
-        super name
-        @options = options
-      end
-
+    class Min < Arelastic::Aggregations::Aggregation
       def as_elastic_aggregation
-        # {"min" => options}
+        {"min" => options}
       end
     end
   end
