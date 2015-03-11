@@ -2,10 +2,10 @@ require 'helper'
 
 class Arelastic::Aggregations::AggregationTest < Minitest::Test
   def test_nested
-    aggregation = Arelastic::Aggregations::Min.new('smallest', 'field' => 'pets.weight').nested('smallest_pet', 'pets')
+    aggregation = Arelastic::Aggregations::Min.new('smallest', 'field' => 'pets.weight').nested('pets')
 
     expected = {
-      "smallest_pet" => {
+      "smallest" => {
         "nested" => {
           "path" => "pets"
         },

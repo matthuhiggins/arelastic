@@ -12,7 +12,7 @@ module Arelastic
         {name => as_elastic_aggregation}
       end
 
-      def nested(name, path)
+      def nested(path)
         Arelastic::Aggregations::Nested.new(name, path, [self])
       end
 
