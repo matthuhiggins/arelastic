@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Queries::FilteredTest < MiniTest::Unit::TestCase
+class Arelastic::Queries::FilteredTest < Minitest::Test
   def test_as_elastic
     filtered = Arelastic::Queries::Filtered.new(
       query: {"query_string" => "bar"},

@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Facets::TermsTest < MiniTest::Unit::TestCase
+class Arelastic::Facets::TermsTest < Minitest::Test
   def test_as_elastic
     facet = Arelastic::Facets::Terms.new('foo', 'tags', "size" => 10)
     expected = {

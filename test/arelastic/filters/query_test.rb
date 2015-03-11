@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Filters::QueryTest < MiniTest::Unit::TestCase
+class Arelastic::Filters::QueryTest < Minitest::Test
   def test_as_elastic
     expected = {"query" => { "match" => {"message" => "this is a test"} }}
 

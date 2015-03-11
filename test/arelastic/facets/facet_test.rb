@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Facets::FacetTest < MiniTest::Unit::TestCase
+class Arelastic::Facets::FacetTest < Minitest::Test
   def test_nested
     facet = Class.new(Arelastic::Facets::Facet) do
       def as_elastic_facet

@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Queries::QueryStringTest < MiniTest::Unit::TestCase
+class Arelastic::Queries::QueryStringTest < Minitest::Test
   def test_as_elastic
     query_string = Arelastic::Queries::QueryString.new('foo')
     expected = {"query_string" => {"query" => "foo"}}

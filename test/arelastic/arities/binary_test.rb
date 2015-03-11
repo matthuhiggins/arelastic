@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Arities::BinaryTest < MiniTest::Unit::TestCase
+class Arelastic::Arities::BinaryTest < Minitest::Test
   def test_binary
     node = Class.new(Arelastic::Nodes::Node) do
       binary 'suffix'

@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Filters::MatchAllTest < MiniTest::Unit::TestCase
+class Arelastic::Filters::MatchAllTest < Minitest::Test
   def test_as_elastic
     match_all = Arelastic::Queries::MatchAll.new
     expected = {"match_all" => {}}

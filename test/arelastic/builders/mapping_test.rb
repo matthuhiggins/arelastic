@@ -1,4 +1,4 @@
 require 'helper'
 
-class Arelastic::Builders::MappingTest < MiniTest::Unit::TestCase
+class Arelastic::Builders::MappingTest < Minitest::Test
 end

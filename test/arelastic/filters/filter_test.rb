@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::FilterTest < MiniTest::Unit::TestCase
+class Arelastic::FilterTest < Minitest::Test
   def test_or
     filter = Arelastic::Filters::Filter.new
 

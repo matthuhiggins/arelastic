@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Facets::HistogramTest < MiniTest::Unit::TestCase
+class Arelastic::Facets::HistogramTest < Minitest::Test
   def test_as_elastic
     facet = Arelastic::Facets::Histogram.new('histo', "field" => "field_name", "interval" => 100)
     expected = {

@@ -1,4 +1,4 @@
 require 'helper'
 
-class Arelastic::Aggregations::NestedTest < MiniTest::Unit::TestCase
+class Arelastic::Aggregations::NestedTest < Minitest::Test
 end

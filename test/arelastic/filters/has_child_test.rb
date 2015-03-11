@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Filters::HasChildTest < MiniTest::Unit::TestCase
+class Arelastic::Filters::HasChildTest < Minitest::Test
   def test_as_elastic
     expected = {"has_child" => {"type" => "comment", "query" => {"query_string" => "lol"}}}
 

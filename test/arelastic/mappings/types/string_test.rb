@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Mappings::StringTest < MiniTest::Unit::TestCase
+class Arelastic::Mappings::StringTest < Minitest::Test
   def test_as_elastic
     type = Arelastic::Mappings::String.new('message', 'index' => 'analyzed')
     expected = {'message' => {'type' => 'string', 'index' => 'analyzed'}}

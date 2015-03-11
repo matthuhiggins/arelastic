@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Mappings::MultiFieldTest < MiniTest::Unit::TestCase
+class Arelastic::Mappings::MultiFieldTest < Minitest::Test
   def test_as_elastic
     type = Arelastic::Mappings::MultiField.new('message', 'message' => {'type' => 'string', 'index' => 'analyzed'}, 'untouched' => {'type' => 'string', 'index' => 'not_analyzed'})
     expected = {

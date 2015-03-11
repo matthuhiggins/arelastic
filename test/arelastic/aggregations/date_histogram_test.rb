@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Aggregations::DateHistogramTest < MiniTest::Unit::TestCase
+class Arelastic::Aggregations::DateHistogramTest < Minitest::Test
   def test_as_elastic
     aggregation = Arelastic::Aggregations::DateHistogram.new('foo', 'field' => 'birthdate', 'interval' => 'month')
 

@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Queries::BoolTest < MiniTest::Unit::TestCase
+class Arelastic::Queries::BoolTest < Minitest::Test
   def test_as_elastic
     bool = Arelastic::Queries::Bool.new(
       'must' => {

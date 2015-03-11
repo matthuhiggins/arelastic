@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Queries::WildcardTest < MiniTest::Unit::TestCase
+class Arelastic::Queries::WildcardTest < Minitest::Test
   def test_as_elastic
     expected = {"wildcard" => {"foo" => "bar*"}}
 

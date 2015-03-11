@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Nodes::NodeTest < MiniTest::Unit::TestCase
+class Arelastic::Nodes::NodeTest < Minitest::Test
   def test_equality
     node = Class.new(Arelastic::Nodes::Node) do
       def initialize(value)

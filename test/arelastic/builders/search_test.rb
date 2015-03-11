@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Builders::SearchTest < MiniTest::Unit::TestCase
+class Arelastic::Builders::SearchTest < Minitest::Test
   def test_filter
     assert_equal Arelastic::Builders::Filter, Arelastic::Builders::Search.filter
   end

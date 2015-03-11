@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Aggregations::TermsTest < MiniTest::Unit::TestCase
+class Arelastic::Aggregations::TermsTest < Minitest::Test
   def test_as_elastic
     aggregation = Arelastic::Aggregations::Terms.new('foo', 'field' => 'tags', 'size' => 10)
     expected = {

@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Filters::ScriptTest < MiniTest::Unit::TestCase
+class Arelastic::Filters::ScriptTest < Minitest::Test
   def test_as_elastic
     expected = {"script" => {"script" => "doc['color'].value.charAt(0) == 'r'"}}
 

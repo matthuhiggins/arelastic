@@ -1,5 +1,5 @@
 require 'helper'
 
-class Arelastic::Builders::SortTest < MiniTest::Unit::TestCase
+class Arelastic::Builders::SortTest < Minitest::Test
   
 end

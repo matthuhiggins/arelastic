@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Queries::MultiMatchTest < MiniTest::Unit::TestCase
+class Arelastic::Queries::MultiMatchTest < Minitest::Test
   def test_as_elastic
     query = "bar"
     fields = ["field_1", "field_2"]

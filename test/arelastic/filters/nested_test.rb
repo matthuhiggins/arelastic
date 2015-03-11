@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Filters::NestedTest < MiniTest::Unit::TestCase
+class Arelastic::Filters::NestedTest < Minitest::Test
   def test_as_elastic
     expected = {
       "nested" => {
