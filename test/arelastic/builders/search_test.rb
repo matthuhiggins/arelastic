@@ -13,10 +13,6 @@ class Arelastic::Builders::SearchTest < Minitest::Test
     assert_equal Arelastic::Builders::Aggregation, Arelastic::Builders::Search.aggregation
   end
 
-  def test_facet
-    assert_equal Arelastic::Builders::Facet, Arelastic::Builders::Search.facet
-  end
-
   def test_filter
     assert_equal Arelastic::Builders::Query, Arelastic::Builders::Search.query
   end
