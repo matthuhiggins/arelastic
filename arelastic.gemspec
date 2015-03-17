@@ -14,6 +14,6 @@ Gem::Specification.new do |s|
   s.email             = 'developer@matthewhiggins.com'
   s.homepage          = 'http://github.com/matthuhiggins/arelastic'
 
-  s.extra_rdoc_files = ['README.rdoc']
+  s.extra_rdoc_files = ['README.md']
   s.files = Dir['{lib,test}/**/*.rb']
 end

@@ -1,0 +1,1 @@
+[![Travis](https://secure.travis-ci.org/matthuhiggins/arelastic.png?rvm=1.9.3)][http://travis-ci.org/matthuhiggins/arelastic]
