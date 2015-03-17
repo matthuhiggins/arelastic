@@ -1,1 +1,1 @@
-[![Travis](https://secure.travis-ci.org/matthuhiggins/arelastic.png?rvm=1.9.3)](http://travis-ci.org/matthuhiggins/arelastic)
+[![Travis](https://secure.travis-ci.org/matthuhiggins/arelastic.png?rvm=1.9.3)](http://travis-ci.org/matthuhiggins/arelastic) [![Code Climate](https://codeclimate.com/github/matthuhiggins/arelastic/badges/gpa.svg)](https://codeclimate.com/github/matthuhiggins/arelastic)
