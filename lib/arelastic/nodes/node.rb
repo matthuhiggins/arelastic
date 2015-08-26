@@ -14,7 +14,7 @@ module Arelastic
       end
 
       def ==(other)
-        as_elastic == other.as_elastic
+        other.is_a?(Arelastic::Nodes::Node) && as_elastic == other.as_elastic
       end
     end
   end

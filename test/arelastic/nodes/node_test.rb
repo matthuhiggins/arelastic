@@ -14,5 +14,6 @@ class Arelastic::Nodes::NodeTest < Minitest::Test
 
     assert_equal node.new('foo'), node.new('foo')
     refute_equal node.new('foo'), node.new('bar')
+    refute_equal node.new('foo'), 'wut'
   end
 end
