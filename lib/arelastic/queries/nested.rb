@@ -1,6 +1,6 @@
 module Arelastic
-  module Filters
-    class Nested < Arelastic::Filters::Filter
+  module Queries
+    class Nested < Arelastic::Queries::Query
       include Arelastic::Nodes::Nested
     end
   end
