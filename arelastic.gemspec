@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'arelastic'
-  s.version = '0.9.1'
+  s.version = '1.0.0'
   s.summary = 'Elastic Search query builder'
   s.description = 'Build Elastic Search queries with objects'
 
