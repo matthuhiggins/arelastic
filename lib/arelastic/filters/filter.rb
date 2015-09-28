@@ -14,7 +14,7 @@ module Arelastic
       end
 
       def nested path
-        Arelastic::Filters::Nested.new path, "filter" => self.as_elastic
+        Arelastic::Filters::Nested.new path, self
       end
     end
   end

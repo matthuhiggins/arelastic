@@ -12,8 +12,15 @@ module Arelastic
         @expr = expr
       end
 
+      def search_context
+        is_a?(Arelastic::Filters::Filter) ? 'filter' : 'query'
+      end
+
       def as_elastic
-        params = {'path' => path}.update(convert_to_elastic(expr))
+        params = {
+          'path'          => path,
+          search_context  => convert_to_elastic(expr)
+        }
 
         { 'nested' => params }
       end

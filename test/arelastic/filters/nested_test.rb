@@ -5,7 +5,7 @@ class Arelastic::Filters::NestedTest < Minitest::Test
     expected = {
       "nested" => {
         "path"  => "bunnies",
-        "query" => {
+        "filter" => {
           "match" => {
             "name" => "Harry"
           }
@@ -13,7 +13,7 @@ class Arelastic::Filters::NestedTest < Minitest::Test
       }
     }
 
-    assert_equal expected, Arelastic::Filters::Nested.new('bunnies', Arelastic::Searches::Query.new(Arelastic::Queries::Match.new('name', 'Harry'))).as_elastic
+    assert_equal expected, Arelastic::Filters::Nested.new('bunnies', Arelastic::Queries::Match.new('name', 'Harry')).as_elastic
   end
 
 end
