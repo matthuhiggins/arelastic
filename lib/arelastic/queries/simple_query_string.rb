@@ -1,6 +1,6 @@
 module Arelastic
   module Queries
-    class MultiMatch < Query
+    class SimpleQueryString < Query
       attr_accessor :fields, :query, :options
       def initialize(fields, query, options = {})
         @fields = fields
@@ -10,7 +10,7 @@ module Arelastic
 
       def as_elastic
         {
-          "multi_match" => {
+          "simple_query_string" => {
             "fields"  => convert_to_elastic(fields),
             "query"   => convert_to_elastic(query)
           }.merge(options)

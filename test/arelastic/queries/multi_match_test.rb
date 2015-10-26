@@ -2,13 +2,11 @@ require 'helper'
 
 class Arelastic::Queries::MultiMatchTest < Minitest::Test
   def test_as_elastic
-    query = "bar"
-    fields = ["field_1", "field_2"]
-    multi_match = Arelastic::Queries::MultiMatch.new(fields, query)
+    multi_match = Arelastic::Queries::MultiMatch.new(["color", "name"], "bar")
     expected = {
       "multi_match" => {
         "query" => "bar",
-        "fields" => ["field_1", "field_2"]
+        "fields" => ["color", "name"]
       }
     }
     assert_equal expected, multi_match.as_elastic
