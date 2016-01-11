@@ -2,6 +2,7 @@ require 'arelastic/filters/filter'
 
 require 'arelastic/filters/and'
 require 'arelastic/filters/exists'
+require 'arelastic/filters/geo_bounding_box'
 require 'arelastic/filters/geo_distance'
 require 'arelastic/filters/has_child'
 require 'arelastic/filters/ids'
