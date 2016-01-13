@@ -13,7 +13,7 @@ class Arelastic::Filters::GeoBoundingBoxTest < Minitest::Test
 
     assert_equal(
       expected,
-      Arelastic::Filters::GeoBoundingBox.new('location', [40, -70], [30, -60]).as_elastic
+      Arelastic::Filters::GeoBoundingBox.new('location', 'top_left' => [40, -70], 'bottom_right' => [30, -60]).as_elastic
     )
   end
 
@@ -30,7 +30,7 @@ class Arelastic::Filters::GeoBoundingBoxTest < Minitest::Test
 
     assert_equal(
       expected,
-      Arelastic::Filters::GeoBoundingBox.new('location', [40, -70], [30, -60], 'index' => true).as_elastic
+      Arelastic::Filters::GeoBoundingBox.new('location', {'top_left' => [40, -70], 'bottom_right' => [30, -60]}, 'index' => true).as_elastic
     )
   end
 end
