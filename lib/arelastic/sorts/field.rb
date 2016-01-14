@@ -1,18 +1,18 @@
 module Arelastic
   module Sorts
-    class Sort < Arelastic::Nodes::Node
+    class Field < Arelastic::Nodes::Node
       attr_reader :field, :options
 
-      # Sort.new('price').as_elastic
+      # Field.new('price').as_elastic
       #  => 'price'
       #
-      # Sort.new('price' => 'asc').as_elastic
+      # Field.new('price' => 'asc').as_elastic
       #  => {'price' => 'asc'}
       #
-      # Sort.new('price', 'order' => 'asc').as_elastic
+      # Field.new('price', 'order' => 'asc').as_elastic
       #  => {'price' => {'order', 'asc'}}
       #
-      # Sort.new({'price' => 'asc'}, {'missing' => '_last'}).as_elastic
+      # Field.new({'price' => 'asc'}, {'missing' => '_last'}).as_elastic
       #  => {'price' => {'order' => 'asc', 'missing' => '_last'}}
       #
       def initialize(field, extra_options = nil)
@@ -31,9 +31,9 @@ module Arelastic
         reverse_order = ordering == 'desc' ? 'asc' : 'desc'
 
         if options.is_a?(Hash)
-          Arelastic::Sorts::Sort.new(field, options.merge('order' => reverse_order))
+          Arelastic::Sorts::Field.new(field, options.merge('order' => reverse_order))
         else
-          Arelastic::Sorts::Sort.new(field => reverse_order)
+          Arelastic::Sorts::Field.new(field => reverse_order)
         end
       end
 
