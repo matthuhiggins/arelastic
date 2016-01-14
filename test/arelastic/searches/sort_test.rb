@@ -3,7 +3,7 @@ require 'helper'
 class Arelastic::Searches::SortTest < MiniTest::Spec
   def test_as_elastic
     sort = Arelastic::Searches::Sort.new [
-      Arelastic::Sorts::Sort.new('price'),
+      Arelastic::Sorts::Field.new('price'),
       {'name' => 'asc'}
     ]
     expected = {'sort' => ['price', {'name' => 'asc'}]}
