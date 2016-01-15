@@ -1,6 +1,6 @@
 module Arelastic
   module Sorts
-    class Field < Arelastic::Nodes::Node
+    class Field < Arelastic::Sorts::Sort
       attr_reader :field, :options
 
       # Field.new('price').as_elastic

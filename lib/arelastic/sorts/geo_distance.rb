@@ -1,6 +1,6 @@
 module Arelastic
   module Sorts
-    class GeoDistance < Arelastic::Nodes::Node
+    class GeoDistance < Arelastic::Sorts::Sort
       attr_accessor :field, :location, :options
 
       # GeoDistance.new('coordinates', [-70, 40]).as_elastic
