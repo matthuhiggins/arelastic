@@ -2,6 +2,7 @@ rvm:
   - 2.0.0
   - 2.1
   - 2.2
-  - 2.3
+  # Not 2.3 because https://github.com/travis-ci/travis-ci/issues/5361
+  - 2.3.0
 sudo: false
 cache: bundler
