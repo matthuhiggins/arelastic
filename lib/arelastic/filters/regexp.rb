@@ -12,8 +12,8 @@ module Arelastic
     class Regexp < Filter
       binary 'regexp'
 
-      def convert_to_elastic(expr)
-        if expr.is_a?(::Regexp)
+      def initialize(field, value, options = {})
+        if value.is_a?(::Regexp)
           raise TypeError.new('Regexp objects are not allowed to be Regexp filter values')
         end
 
