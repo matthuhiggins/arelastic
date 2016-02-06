@@ -52,6 +52,10 @@ module Arelastic
         Arelastic::Filters::Missing.new field, options
       end
 
+      def regexp other
+        Arelastic::Filters::Regexp.new field, other
+      end
+
       def gteq other
         range 'gte' => other
       end

@@ -59,6 +59,11 @@ class Arelastic::Builders::FilterTest < Minitest::Test
     assert_equal expected, builder.missing.as_elastic
   end
 
+  def test_regexp
+    expected = {"regexp" => {"color" => "green(-blue)?"}}
+    assert_equal expected, builder.regexp("green(-blue)?").as_elastic
+  end
+
   def test_range
     expected = {"range" => {"color" => {"lt" => 5}}}
     assert_equal expected, builder.lt(5).as_elastic
