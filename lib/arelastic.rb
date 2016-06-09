@@ -1,9 +1,9 @@
 require 'arelastic/arities'
 require 'arelastic/nodes'
 require 'arelastic/aggregations'
+require 'arelastic/queries'
 require 'arelastic/filters'
 require 'arelastic/mappings'
-require 'arelastic/queries'
 require 'arelastic/searches'
 require 'arelastic/sorts'
 

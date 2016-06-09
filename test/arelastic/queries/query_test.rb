@@ -15,4 +15,13 @@ class Arelastic::Queries::QueryTest < Minitest::Test
     }
     assert_equal(expected, nested_query.as_elastic)
   end
+
+  def test_negate
+    filter = Arelastic::Queries::Term.new 'foo', 'bar'
+
+    negated_filter = filter.negate
+
+    assert negated_filter.is_a?(Arelastic::Queries::Bool)
+    assert_equal filter, negated_filter.options[:must_not]
+  end
 end
