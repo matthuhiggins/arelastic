@@ -1,7 +1,7 @@
 require 'helper'
 
 class Arelastic::FilterTest < Minitest::Test
-  def test_or
+  def test_and
     filter = Arelastic::Filters::Filter.new
 
     and_filter = filter.and(filter)
@@ -10,7 +10,7 @@ class Arelastic::FilterTest < Minitest::Test
     assert_equal [filter, filter], and_filter.children
   end
 
-  def test_and
+  def test_or
     filter = Arelastic::Filters::Filter.new
 
     and_filter = filter.or(filter)
