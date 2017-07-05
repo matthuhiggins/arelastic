@@ -1,18 +1,27 @@
 module Arelastic
   module Queries
     class Bool < Arelastic::Queries::Query
-      attr_accessor :options
-      def initialize(options)
-        @options = options
+      attr_accessor :must, :filter, :should, :must_not
+      def initialize(must: nil, filter: nil, should: nil, must_not: nil)
+        @must     = must
+        @filter   = filter
+        @should   = should
+        @must_not = must_not
       end
 
       def as_elastic
-        params = {}
-        options.each do |key, value|
-          params[key] = convert_to_elastic(value)
+        searches = {}
+
+        {
+          'must'     => must,
+          'filter'   => filter,
+          'should'   => should,
+          'must_not' => must_not
+        }.each do |k, v|
+          searches[k] = convert_to_elastic(v) if v
         end
 
-        { "bool" => params }
+        {'bool' => searches}
       end
     end
   end

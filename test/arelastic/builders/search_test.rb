@@ -13,11 +13,11 @@ class Arelastic::Builders::SearchTest < Minitest::Test
     assert_equal Arelastic::Builders::Aggregation, Arelastic::Builders::Search.aggregation
   end
 
-  def test_filter
+  def test_query
     assert_equal Arelastic::Builders::Query, Arelastic::Builders::Search.query
   end
 
-  def test_filter
+  def test_sort
     assert_equal Arelastic::Builders::Sort, Arelastic::Builders::Search.sort
   end
 end
