@@ -1,14 +1,18 @@
 module Arelastic
   module Filters
     class Exists < Arelastic::Filters::Filter
-      attr_reader :field
+      attr_reader :field, :options
 
-      def initialize field
+      # Options:
+      #   "null_value" => "_null_"
+      def initialize field, options = {}
         @field = field
+        @options = options
       end
 
       def as_elastic
-        {"exists" => { "field" => field }}
+        params = {"field" => field}.update(options)
+        {"exists" => params}
       end
     end
   end
