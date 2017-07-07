@@ -16,9 +16,8 @@ module Arelastic
       private
 
         def build_sub_aggs
-          aggs.each_with_object({}) do |agg, result|
-            result.merge!(agg.as_elastic)
-          end
+          grouping = Arelastic::Nodes::HashGroup.new aggs
+          grouping.as_elastic
         end
     end
   end
