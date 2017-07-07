@@ -16,7 +16,7 @@ module Arelastic
       end
 
       def options
-        if path.presence
+        if path
           { "path" => path }
         else
           {}

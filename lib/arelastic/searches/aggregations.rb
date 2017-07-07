@@ -14,6 +14,10 @@ module Arelastic
       def nested(name, path)
         Arelastic::Aggregations::Nested.new name, path, aggregations
       end
+
+      def reverse_nested(name, path = nil)
+        Arelastic::Aggregations::ReverseNested.new name, path, aggregations
+      end
     end
   end
 end
