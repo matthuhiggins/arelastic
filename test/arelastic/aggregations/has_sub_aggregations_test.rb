@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Aggregations::BucketAggregationTest < Minitest::Test
+class Arelastic::Aggregations::HasSubAggregationsTest < Minitest::Test
   def test_includes_aggs
     sub_aggregation = Arelastic::Aggregations::Terms.new('name', 'field' => 'name', 'size' => 10)
     aggregation = Arelastic::Aggregations::Terms.new('tags', 'field' => 'tags', 'size' => 10, aggs: [sub_aggregation])
