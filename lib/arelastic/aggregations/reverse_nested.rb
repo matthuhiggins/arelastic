@@ -1,7 +1,7 @@
 module Arelastic
   module Aggregations
     class ReverseNested < Arelastic::Aggregations::Aggregation
-      include HasSubAggregations
+      include Arelastic::Nodes::HasAggregations
 
       attr_accessor :path
 
@@ -12,7 +12,7 @@ module Arelastic
       end
 
       def as_elastic_aggregation
-        sub_aggregations.merge!({ "reverse_nested" => options })
+        aggs_as_elastic.merge!({ "reverse_nested" => options })
       end
 
       def options

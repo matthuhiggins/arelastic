@@ -8,7 +8,7 @@ module Arelastic
       end
 
       def terms options = {}
-        Arelastic::Aggregations::Terms.new name, options
+        Arelastic::Aggregations::Terms.new(name, options)
       end
 
       def histogram options

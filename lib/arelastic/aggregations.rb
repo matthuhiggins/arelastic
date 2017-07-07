@@ -1,5 +1,4 @@
 require 'arelastic/aggregations/aggregation'
-require 'arelastic/aggregations/has_sub_aggregations'
 
 require 'arelastic/aggregations/date_histogram'
 require 'arelastic/aggregations/filter'

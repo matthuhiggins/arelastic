@@ -1,7 +1,7 @@
 module Arelastic
   module Aggregations
     class Filter < Arelastic::Aggregations::Aggregation
-      include Arelastic::Aggregations::HasSubAggregations
+      include Arelastic::Nodes::HasAggregations
 
       attr_accessor :filter
 
@@ -12,7 +12,7 @@ module Arelastic
       end
 
       def as_elastic_aggregation
-        sub_aggregations.merge!({'filter' => convert_to_elastic(filter)})
+        aggs_as_elastic.merge!({'filter' => convert_to_elastic(filter)})
       end
     end
   end

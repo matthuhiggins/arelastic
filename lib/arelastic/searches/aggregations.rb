@@ -1,14 +1,14 @@
 module Arelastic
   module Searches
     class Aggregations < Arelastic::Searches::Search
-      include Arelastic::Aggregations::HasSubAggregations
+      include Arelastic::Nodes::HasAggregations
 
       def initialize *aggs
         @aggs = aggs.flatten
       end
 
       def as_elastic
-        sub_aggregations
+        aggs_as_elastic
       end
 
       def nested(name, path)

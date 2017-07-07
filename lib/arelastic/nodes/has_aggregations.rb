@@ -1,13 +1,13 @@
 module Arelastic
-  module Aggregations
-    module HasSubAggregations
+  module Nodes
+    module HasAggregations
       class_eval do
         attr_accessor :aggs
       end
 
-      def sub_aggregations
+      def aggs_as_elastic
         if aggs.any?
-          { 'aggs' => build_sub_aggs }
+          { 'aggs' => build_aggs_as_elastic }
         else
           {}
         end
@@ -15,7 +15,7 @@ module Arelastic
 
       private
 
-        def build_sub_aggs
+        def build_aggs_as_elastic
           grouping = Arelastic::Nodes::HashGroup.new aggs
           grouping.as_elastic
         end

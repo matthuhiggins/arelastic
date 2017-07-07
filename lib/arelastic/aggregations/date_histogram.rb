@@ -1,7 +1,7 @@
 module Arelastic
   module Aggregations
     class DateHistogram < Arelastic::Aggregations::Aggregation
-      include Arelastic::Aggregations::HasSubAggregations
+      include Arelastic::Nodes::HasAggregations
 
       def initialize(name, options = {}, aggs: [])
         super name, options
@@ -9,7 +9,7 @@ module Arelastic
       end
 
       def as_elastic_aggregation
-        sub_aggregations.merge!({'date_histogram' => options})
+        aggs_as_elastic.merge!({'date_histogram' => options})
       end
     end
   end
