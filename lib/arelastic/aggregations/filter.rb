@@ -1,7 +1,7 @@
 module Arelastic
   module Aggregations
-   class Filter < Arelastic::Aggregations::Aggregation
-     include Arelastic::Aggregations::HasSubAggregations
+    class Filter < Arelastic::Aggregations::Aggregation
+      include Arelastic::Aggregations::HasSubAggregations
 
       attr_accessor :filter
 
