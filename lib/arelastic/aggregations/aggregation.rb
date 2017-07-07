@@ -5,7 +5,7 @@ module Arelastic
 
       def initialize(name, options = {})
         @name = name
-        @options = options
+        self.options = options
       end
 
       def as_elastic

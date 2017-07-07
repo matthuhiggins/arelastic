@@ -5,12 +5,23 @@ module Arelastic
         attr_accessor :aggs
       end
 
+      def aggs
+        @aggs ||= []
+      end
+
       def aggs_as_elastic
         if aggs.any?
           { 'aggs' => build_aggs_as_elastic }
         else
           {}
         end
+      end
+
+      def options=(hash)
+        @aggs = hash.delete(:aggs)
+        @aggs ||= hash.delete('aggs')
+
+        @options = hash
       end
 
       private
