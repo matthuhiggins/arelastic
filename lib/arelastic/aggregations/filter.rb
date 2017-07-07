@@ -1,6 +1,6 @@
 module Arelastic
   module Aggregations
-    class Filter < Arelastic::Aggregations::Aggregation
+   class Filter < Arelastic::Aggregations::BucketAggregation
       attr_accessor :filter
 
       def initialize name, filter
@@ -9,7 +9,7 @@ module Arelastic
       end
 
       def as_elastic_aggregation
-        {'filter' => convert_to_elastic(filter)}
+        base_bucket_aggregation.merge!({'filter' => convert_to_elastic(filter)})
       end
     end
   end

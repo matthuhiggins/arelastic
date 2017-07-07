@@ -1,4 +1,5 @@
 require 'arelastic/aggregations/aggregation'
+require 'arelastic/aggregations/bucket_aggregation'
 
 require 'arelastic/aggregations/date_histogram'
 require 'arelastic/aggregations/filter'
