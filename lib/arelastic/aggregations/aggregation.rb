@@ -16,6 +16,10 @@ module Arelastic
         Arelastic::Aggregations::Nested.new(name, path, [self])
       end
 
+      def reverse_nested(path = nil)
+        Arelastic::Aggregations::ReverseNested.new(name, path, [self])
+      end
+
       def as_elastic_aggregation
         raise 'not implemented'
       end
