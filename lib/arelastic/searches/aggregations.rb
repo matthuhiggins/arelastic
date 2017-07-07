@@ -1,22 +1,22 @@
 module Arelastic
   module Searches
     class Aggregations < Arelastic::Searches::Search
-      attr_accessor :aggregations
-      def initialize *aggregations
-        @aggregations = aggregations.flatten
+      include Arelastic::Aggregations::HasSubAggregations
+
+      def initialize *aggs
+        @aggs = aggs.flatten
       end
 
       def as_elastic
-        grouping = Arelastic::Nodes::HashGroup.new aggregations.flatten
-        { "aggs" => grouping.as_elastic }
+        sub_aggregations
       end
 
       def nested(name, path)
-        Arelastic::Aggregations::Nested.new name, path, aggregations
+        Arelastic::Aggregations::Nested.new name, path, aggs
       end
 
       def reverse_nested(name, path = nil)
-        Arelastic::Aggregations::ReverseNested.new name, path, aggregations
+        Arelastic::Aggregations::ReverseNested.new name, path, aggs
       end
     end
   end
