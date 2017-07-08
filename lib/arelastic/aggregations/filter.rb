@@ -3,7 +3,7 @@ module Arelastic
     class Filter < Arelastic::Aggregations::Bucket
       attr_accessor :filter
 
-      def initialize(name, filter:, **options)
+      def initialize(name, filter, options = {})
         super name, options
         @filter = filter
       end
