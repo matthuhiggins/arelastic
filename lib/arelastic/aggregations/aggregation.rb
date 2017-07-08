@@ -4,8 +4,8 @@ module Arelastic
       attr_accessor :name, :options
 
       def initialize(name, options = {})
-        @name = name
-        self.options = options
+        @name    = name
+        @options = options
       end
 
       def as_elastic

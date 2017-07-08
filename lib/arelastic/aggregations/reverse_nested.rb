@@ -1,26 +1,16 @@
 module Arelastic
   module Aggregations
-    class ReverseNested < Arelastic::Aggregations::Aggregation
-      include Arelastic::Nodes::HasAggregations
-
+    class ReverseNested < Arelastic::Aggregations::Bucket
       attr_accessor :path
 
-      def initialize(name, path = nil, aggs)
-        super name
+      def initialize(name, path: nil, **options)
+        super name, options
         @path = path
-        @aggs = aggs
       end
 
       def as_elastic_aggregation
-        aggs_as_elastic.merge!({ "reverse_nested" => options })
-      end
-
-      def options
-        if path
-          { "path" => path }
-        else
-          {}
-        end
+        params = path ? { "path" => path } : {}
+        { "reverse_nested" => params }
       end
     end
   end
