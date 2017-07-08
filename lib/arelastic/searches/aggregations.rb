@@ -11,11 +11,11 @@ module Arelastic
         aggs_as_elastic
       end
 
-      def nested(name, path)
+      def nested name, path
         Arelastic::Aggregations::Nested.new name, path, aggs
       end
 
-      def reverse_nested(name, path = nil)
+      def reverse_nested name, path = nil
         Arelastic::Aggregations::ReverseNested.new name, path, aggs
       end
     end
