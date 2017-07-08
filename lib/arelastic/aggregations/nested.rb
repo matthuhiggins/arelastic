@@ -3,8 +3,8 @@ module Arelastic
     class Nested < Arelastic::Aggregations::Bucket
       attr_accessor :path
 
-      def initialize(name, path:, **options)
-        super name, **options
+      def initialize(name, path, aggs)
+        super name, aggs: aggs
         @path = path
       end
 
