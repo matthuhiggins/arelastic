@@ -8,12 +8,12 @@ class Arelastic::Builders::QueryTest < Minitest::Test
     assert_equal expected, query.as_elastic
   end
 
-  def test_bool
-    query = Arelastic::Builders::Query.bool(
-      must: {"query_string" => "foo"},
+  def test_filtered
+    query = Arelastic::Builders::Query.filtered(
+      query: {"query_string" => "foo"},
       filter: {"term" => "bar"}
     )
-    expected = {"query" => {"bool" => {"must" => {"query_string" => "foo"}, "filter" => {"term" => "bar"}}}}
+    expected = {"query" => {"filtered" => {"query" => {"query_string" => "foo"}, "filter" => {"term" => "bar"}}}}
 
     assert_equal expected, query.as_elastic
   end

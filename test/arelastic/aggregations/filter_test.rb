@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Aggregations::FilterTest < Minitest::Test
+class Arelastic::Aggregations::TermsTest < Minitest::Test
   def test_as_elastic
     aggregation = Arelastic::Aggregations::Filter.new('foo', 'exists' => {'field' => 'color'})
     expected = {
