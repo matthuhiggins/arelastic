@@ -5,10 +5,9 @@ module Arelastic
 
       attr_accessor :filter
 
-      def initialize(name, filter, aggs: [])
-        super name
+      def initialize(name, filter, options = {})
+        super name, options
         @filter = filter
-        @aggs = aggs
       end
 
       def as_elastic_aggregation
