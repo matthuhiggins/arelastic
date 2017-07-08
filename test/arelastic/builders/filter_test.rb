@@ -55,7 +55,7 @@ class Arelastic::Builders::FilterTest < Minitest::Test
   end
 
   def test_missing
-    expected = {"missing" => {"field" => "color"}}
+    expected = {"bool" => {"must_not" => {"exists" => {"field" => "color"}}}}
     assert_equal expected, builder.missing.as_elastic
   end
 

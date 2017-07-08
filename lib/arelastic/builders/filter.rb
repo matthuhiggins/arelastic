@@ -44,12 +44,12 @@ module Arelastic
         Arelastic::Filters::Prefix.new field, other
       end
 
-      def exists
-        Arelastic::Filters::Exists.new field
+      def exists(options = {})
+        Arelastic::Filters::Exists.new field, options
       end
 
       def missing(options = {})
-        Arelastic::Filters::Missing.new field, options
+        exists(options).negate
       end
 
       def regexp other

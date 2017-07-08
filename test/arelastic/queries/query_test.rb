@@ -22,6 +22,6 @@ class Arelastic::Queries::QueryTest < Minitest::Test
     negated_filter = filter.negate
 
     assert negated_filter.is_a?(Arelastic::Queries::Bool)
-    assert_equal filter, negated_filter.options[:must_not]
+    assert_equal filter, negated_filter.must_not
   end
 end
