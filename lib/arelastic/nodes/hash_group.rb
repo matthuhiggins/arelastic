@@ -7,11 +7,9 @@ module Arelastic
       end
 
       def as_elastic
-        result = {}
-        nodes.each do |node|
+        nodes.each_with_object({}) do |node, result|
           result.merge! convert_to_elastic(node)
         end
-        result
       end
     end
   end

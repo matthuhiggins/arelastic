@@ -1,6 +1,6 @@
 module Arelastic
   module Aggregations
-    class DateHistogram < Arelastic::Aggregations::Aggregation
+    class DateHistogram < Arelastic::Aggregations::Bucket
       def as_elastic_aggregation
         {'date_histogram' => options}
       end

@@ -1,10 +1,10 @@
 module Arelastic
   module Aggregations
-    class Filter < Arelastic::Aggregations::Aggregation
+    class Filter < Arelastic::Aggregations::Bucket
       attr_accessor :filter
 
-      def initialize name, filter
-        super name
+      def initialize(name, filter, options = {})
+        super name, options
         @filter = filter
       end
 
