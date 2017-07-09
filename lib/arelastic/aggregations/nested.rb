@@ -1,23 +1,15 @@
 module Arelastic
   module Aggregations
-    class Nested < Arelastic::Aggregations::Aggregation
-      attr_accessor :path, :aggregations
+    class Nested < Arelastic::Aggregations::Bucket
+      attr_accessor :path
 
-      # HashGroup
-      def initialize name, path, aggregations
-        super name
+      def initialize(name, path, aggs)
+        super name, aggs: aggs
         @path = path
-        @aggregations = aggregations
       end
 
-      def as_elastic
-        grouping = Arelastic::Nodes::HashGroup.new aggregations
-        {
-          name => {
-            "nested" => {"path" => path},
-            "aggs"   => grouping.as_elastic
-          }
-        }
+      def as_elastic_aggregation
+        { "nested" => { "path" => path } }
       end
     end
   end

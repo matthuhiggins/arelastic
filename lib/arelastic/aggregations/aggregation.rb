@@ -4,7 +4,7 @@ module Arelastic
       attr_accessor :name, :options
 
       def initialize(name, options = {})
-        @name = name
+        @name    = name
         @options = options
       end
 
@@ -14,6 +14,10 @@ module Arelastic
 
       def nested(path)
         Arelastic::Aggregations::Nested.new(name, path, [self])
+      end
+
+      def reverse_nested(path = nil)
+        Arelastic::Aggregations::ReverseNested.new(name, path, [self])
       end
 
       def as_elastic_aggregation
