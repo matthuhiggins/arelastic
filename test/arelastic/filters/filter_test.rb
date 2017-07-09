@@ -11,10 +11,8 @@ class Arelastic::Filters::FilterTest < Minitest::Test
       "nested" => {
         "path" => "links",
         "query" => {
-          "constant_score" => {
-            "term" => {
-              "foo" => "bar"
-            }
+          "term" => {
+            "foo" => "bar"
           }
         }
       }
