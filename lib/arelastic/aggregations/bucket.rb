@@ -4,8 +4,9 @@ module Arelastic
       attr_accessor :aggs
 
       def initialize(name, options = {})
+        options = options.dup
+        @aggs = options.delete(:aggs) || options.delete('aggs')
         super(name, options)
-        @aggs = options[:aggs] || options['aggs']
       end
 
       def as_elastic
