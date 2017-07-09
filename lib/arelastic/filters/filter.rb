@@ -1,16 +1,8 @@
 module Arelastic
   module Filters
     class Filter < Arelastic::Queries::Query
-      def or other
-        Arelastic::Filters::Or.new [self, other]
-      end
-
-      def and other
-        Arelastic::Filters::And.new [self, other]
-      end
-
       def nested path
-        Arelastic::Filters::Nested.new path, self
+        Arelastic::Queries::Nested.new path, Arelastic::Queries::ConstantScore.new(self)
       end
     end
   end
