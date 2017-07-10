@@ -11,7 +11,7 @@ module Arelastic
         end
 
         def not expr
-          Arelastic::Filters::Not.new expr
+          Arelastic::Queries::Bool.new must_not: expr
         end
       end
 

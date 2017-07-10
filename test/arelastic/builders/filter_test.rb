@@ -7,7 +7,7 @@ class Arelastic::Builders::FilterTest < Minitest::Test
   end
 
   def test_not
-    expected = {"not" => {"terms" => {"color" => "blue"}}}
+    expected = {"bool" => {"must_not" => {"terms" => {"color" => "blue"}}}}
     assert_equal expected, Arelastic::Builders::Filter.not({"terms" => {"color" => "blue"}}).as_elastic    
   end
 
@@ -17,7 +17,7 @@ class Arelastic::Builders::FilterTest < Minitest::Test
   end
 
   def test_not_eq
-    expected = {"not" => {"term" => {"color"=>"blue"}}}
+    expected = {"bool" => {"must_not" => {"term" => {"color" => "blue"}}}}
     assert_equal expected, builder.not_eq('blue').as_elastic
   end
 
@@ -40,7 +40,7 @@ class Arelastic::Builders::FilterTest < Minitest::Test
   end
 
   def test_not_in
-    expected = {"not" => {"terms" => {"color"=>["blue"]}}}
+    expected = {"bool" => {"must_not" => {"terms" => {"color"=>["blue"]}}}}
     assert_equal expected, builder.not_in(['blue']).as_elastic
   end
 
