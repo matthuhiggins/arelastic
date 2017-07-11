@@ -1,6 +1,6 @@
 module Arelastic
-  module Filters
-    class GeoBoundingBox < Arelastic::Filters::Filter
+  module Queries
+    class GeoBoundingBox < Arelastic::Queries::Query
       attr_accessor :field, :bounds, :options
       def initialize(field, bounds, options = {})
         @field    = field

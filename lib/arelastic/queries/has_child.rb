@@ -1,6 +1,6 @@
 module Arelastic
-  module Filters
-    class HasChild < Arelastic::Filters::Filter
+  module Queries
+    class HasChild < Arelastic::Queries::Query
       attr_reader :type, :query
 
       def initialize type, query

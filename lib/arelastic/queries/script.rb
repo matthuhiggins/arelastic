@@ -1,6 +1,6 @@
 module Arelastic
-  module Filters
-    class Script < Arelastic::Filters::Filter
+  module Queries
+    class Script < Arelastic::Queries::Query
       attr_reader :script, :options
 
       def initialize script, options = {}

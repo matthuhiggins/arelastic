@@ -1,8 +1,8 @@
 require 'helper'
 
-class Arelastic::Filters::FilterTest < Minitest::Test
+class Arelastic::Queries::FilterTest < Minitest::Test
   def test_nested
-    filter = Arelastic::Filters::Term.new('foo', 'bar')
+    filter = Arelastic::Queries::Term.new('foo', 'bar')
 
     nested_filter = filter.nested 'links'
 

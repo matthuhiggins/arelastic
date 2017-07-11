@@ -1,6 +1,6 @@
 module Arelastic
-  module Filters
-    class Ids < Arelastic::Filters::Filter
+  module Queries
+    class Ids < Arelastic::Queries::Query
       attr_reader :values
 
       def initialize values

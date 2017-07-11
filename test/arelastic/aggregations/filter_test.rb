@@ -17,7 +17,7 @@ class Arelastic::Aggregations::FilterTest < Minitest::Test
   end
 
   def test_as_elastic_with_node
-    aggregation = Arelastic::Aggregations::Filter.new('foo', Arelastic::Filters::Exists.new('color'))
+    aggregation = Arelastic::Aggregations::Filter.new('foo', Arelastic::Queries::Exists.new('color'))
     expected = {
       "foo" => {
         "filter" => {

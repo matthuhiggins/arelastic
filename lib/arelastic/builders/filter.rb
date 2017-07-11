@@ -7,7 +7,7 @@ module Arelastic
         end
 
         def ids *ids
-          Arelastic::Filters::Ids.new ids.flatten
+          Arelastic::Queries::Ids.new ids.flatten
         end
 
         def not expr
@@ -16,7 +16,7 @@ module Arelastic
       end
 
       def eq other
-        Arelastic::Filters::Term.new field, other
+        Arelastic::Queries::Term.new field, other
       end
 
       def not_eq other
@@ -32,7 +32,7 @@ module Arelastic
             range 'gte' => other.begin, 'lte' => other.end
           end
         else
-          Arelastic::Filters::Terms.new field, other, options
+          Arelastic::Queries::Terms.new field, other, options
         end
       end
 
@@ -41,11 +41,11 @@ module Arelastic
       end
 
       def prefix other
-        Arelastic::Filters::Prefix.new field, other
+        Arelastic::Queries::Prefix.new field, other
       end
 
       def exists(options = {})
-        Arelastic::Filters::Exists.new field, options
+        Arelastic::Queries::Exists.new field, options
       end
 
       def missing(options = {})
@@ -53,7 +53,7 @@ module Arelastic
       end
 
       def regexp other
-        Arelastic::Filters::Regexp.new field, other
+        Arelastic::Queries::Regexp.new field, other
       end
 
       def gteq other
@@ -74,7 +74,7 @@ module Arelastic
 
       private
         def range options
-          Arelastic::Filters::Range.new field, options
+          Arelastic::Queries::Range.new field, options
         end
     end
   end

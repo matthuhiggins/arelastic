@@ -14,7 +14,7 @@ module Arelastic
 
       module Methods
         def initialize expr
-          # raise "#{expr.inspect} must be an Arelastic::Filters::Filter" unless expr.is_a?(Arelastic::Filters::Filter)
+          # raise "#{expr.inspect} must be an Arelastic::Queries::Filter" unless expr.is_a?(Arelastic::Queries::Filter)
           @expr = expr
         end
 
