@@ -1,6 +1,6 @@
 module Arelastic
-  module Filters
-    class Exists < Arelastic::Filters::Filter
+  module Queries
+    class Exists < Arelastic::Queries::Query
       attr_reader :field, :options
 
       # Options:

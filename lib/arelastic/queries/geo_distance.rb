@@ -1,6 +1,6 @@
 module Arelastic
-  module Filters
-    class GeoDistance < Arelastic::Filters::Filter
+  module Queries
+    class GeoDistance < Arelastic::Queries::Query
       attr_accessor :field, :location, :distance, :options
       def initialize(field, location, distance, options = {})
         @field = field

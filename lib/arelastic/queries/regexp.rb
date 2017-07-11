@@ -1,5 +1,5 @@
 module Arelastic
-  module Filters
+  module Queries
     #
     # Implements support for the Regexp filter.
     #
@@ -9,7 +9,7 @@ module Arelastic
     #
     # Reference: https://www.elastic.co/guide/en/elasticsearch/reference/1.7/query-dsl-regexp-filter.html
     #
-    class Regexp < Filter
+    class Regexp < Query
       binary 'regexp'
 
       def initialize(field, value, options = {})
