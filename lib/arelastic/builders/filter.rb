@@ -56,17 +56,19 @@ module Arelastic
         Arelastic::Queries::Regexp.new field, other
       end
 
-      def gteq other
+      def gte other
         range 'gte' => other
       end
+      alias_method :gteq, :gte
 
       def gt other
         range 'gt' => other
       end
 
-      def lteq other
+      def lte other
         range 'lte' => other
       end
+      alias_method :lteq, :lte
 
       def lt other
         range 'lt' => other
