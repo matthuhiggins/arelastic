@@ -59,7 +59,6 @@ module Arelastic
       def gte other
         range 'gte' => other
       end
-      alias_method :gteq, :gte
 
       def gt other
         range 'gt' => other
@@ -68,7 +67,6 @@ module Arelastic
       def lte other
         range 'lte' => other
       end
-      alias_method :lteq, :lte
 
       def lt other
         range 'lt' => other
