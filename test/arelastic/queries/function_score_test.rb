@@ -4,12 +4,12 @@ class Arelastic::Queries::FunctionScoreTest < Minitest::Test
   def test_as_elastic
     function_score = Arelastic::Queries::FunctionScore.new(
       query: Arelastic::Queries::MatchAll.new,
-      functions: [
+      'functions' => [
         Arelastic::Queries::Filter.new(
           Arelastic::Queries::Match.new('color', 'green')
         )
       ],
-      boost: 1.0
+      'boost' => 1.0
     )
 
     expected = {

@@ -2,9 +2,9 @@ module Arelastic
   module Queries
     class FunctionScore < Arelastic::Queries::Query
       attr_accessor :query, :functions, :options
-      def initialize(query: nil, functions: nil, **options)
-        @query = query
-        @functions = functions
+      def initialize(options)
+        @query = options.delete('query') || options.delete(:query)
+        @functions = options.delete('functions') || options.delete(:functions)
         @options  = options
       end
 
@@ -18,9 +18,7 @@ module Arelastic
           searches[k] = convert_to_elastic(v) if v
         end
 
-        opts = stringify_options(options)
-
-        { 'function_score' => searches.update(opts) }
+        { 'function_score' => searches.update(options) }
       end
     end
   end
