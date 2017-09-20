@@ -29,7 +29,7 @@ class Arelastic::Queries::BoolTest < Minitest::Test
       should: [
         Arelastic::Queries::Match.new('height', 6)
       ],
-      boost: 1.0
+      'boost' => 1.0
     )
 
     expected = {
