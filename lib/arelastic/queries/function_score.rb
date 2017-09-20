@@ -3,9 +3,9 @@ module Arelastic
     class FunctionScore < Arelastic::Queries::Query
       attr_accessor :query, :functions, :options
       def initialize(options)
-        @query = options.delete('query') || options.delete(:query)
+        @query     = options.delete('query') || options.delete(:query)
         @functions = options.delete('functions') || options.delete(:functions)
-        @options  = options
+        @options   = options
       end
 
       def as_elastic

@@ -3,7 +3,7 @@ module Arelastic
     class Filter < Arelastic::Queries::Query
       attr_accessor :query, :options
       def initialize(query, options = {})
-        @query = query
+        @query   = query
         @options = options
       end
 
