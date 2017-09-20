@@ -3,10 +3,10 @@ module Arelastic
     class Bool < Arelastic::Queries::Query
       attr_accessor :must, :filter, :should, :must_not, :options
       def initialize(options)
-        @must     = options.delete('must') || options.delete(:must)
-        @filter   = options.delete('filter') || options.delete(:filter)
-        @should   = options.delete('should') || options.delete(:should)
-        @must_not = options.delete('must_not') || options.delete(:must_not)
+        @must     = read_option! options, 'must'
+        @filter   = read_option! options, 'filter'
+        @should   = read_option! options, 'should'
+        @must_not = read_option! options, 'must_not'
         @options  = options
       end
 

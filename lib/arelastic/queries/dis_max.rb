@@ -3,7 +3,7 @@ module Arelastic
     class DisMax < Arelastic::Queries::Query
       attr_accessor :queries, :options
       def initialize(options)
-        @queries   = options.delete('queries') || options.delete(:queries)
+        @queries   = read_option! options, 'queries'
         @options   = options
       end
 

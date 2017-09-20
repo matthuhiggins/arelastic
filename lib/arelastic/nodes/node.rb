@@ -13,6 +13,10 @@ module Arelastic
         end
       end
 
+      def read_option!(options, key)
+        options.delete(key) || options.delete(key.to_sym)
+      end
+
       def ==(other)
         other.is_a?(Arelastic::Nodes::Node) && as_elastic == other.as_elastic
       end
