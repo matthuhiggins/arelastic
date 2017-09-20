@@ -2,6 +2,7 @@ require 'arelastic/queries/query'
 
 require 'arelastic/queries/bool'
 require 'arelastic/queries/constant_score'
+require 'arelastic/queries/dis_max'
 require 'arelastic/queries/exists'
 require 'arelastic/queries/field'
 require 'arelastic/queries/geo_bounding_box'
