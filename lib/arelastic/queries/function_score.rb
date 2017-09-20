@@ -9,16 +9,12 @@ module Arelastic
       end
 
       def as_elastic
-        searches = {}
-
         {
-          'query'     => query,
-          'functions' => functions
-        }.each do |k, v|
-          searches[k] = convert_to_elastic(v) if v
-        end
-
-        { 'function_score' => searches.update(options) }
+          'function_score' => {
+            'query'     => convert_to_elastic(query),
+            'functions' => convert_to_elastic(functions)
+          }.update(options)
+        }
       end
     end
   end
