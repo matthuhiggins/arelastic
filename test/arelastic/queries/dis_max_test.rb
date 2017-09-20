@@ -3,22 +3,18 @@ require 'helper'
 class Arelastic::Queries::DisMaxTest < Minitest::Test
   def test_as_elastic
     dis_max = Arelastic::Queries::DisMax.new(
-      [Arelastic::Queries::Match.new('color', 'green')],
-      'tie_breaker' => 0.7,
-      'boost' => 1.2
+      queries: [
+        {'term' => {'user' => 'kimchy'}},
+        Arelastic::Queries::Match.new('color', 'green')
+      ]
     )
 
     expected = {
       'dis_max' => {
         'queries' => [
-          {
-            'match' => {
-              'color' => 'green'
-            }
-          }
-        ],
-        'tie_breaker' => 0.7,
-        'boost' => 1.2
+          {'term' => {'user'=>'kimchy'}},
+          {'match' =>{ 'color'=>'green'}}
+        ]
       }
     }
 
