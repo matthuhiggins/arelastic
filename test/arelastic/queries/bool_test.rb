@@ -17,7 +17,7 @@ class Arelastic::Queries::BoolTest < Minitest::Test
   #
   #   assert_equal expected, filtered.as_elastic
   # end
-  
+
   def test_as_elastic
     bool = Arelastic::Queries::Bool.new(
       must: {
@@ -28,7 +28,8 @@ class Arelastic::Queries::BoolTest < Minitest::Test
       must_not: Arelastic::Queries::Match.new('color', 'green'),
       should: [
         Arelastic::Queries::Match.new('height', 6)
-      ]
+      ],
+      boost: 1.0
     )
 
     expected = {
@@ -47,7 +48,8 @@ class Arelastic::Queries::BoolTest < Minitest::Test
           'match' => {
             'height' => 6
           }
-        ]
+        ],
+        'boost' => 1.0
       }
     }
 
