@@ -11,7 +11,7 @@ module Arelastic
         {
           'dis_max' => {
             'queries' => convert_to_elastic(queries),
-          }.merge(options)
+          }.update(options)
         }
       end
     end

@@ -7,7 +7,7 @@ module Arelastic
         @filter   = filter
         @should   = should
         @must_not = must_not
-        @options  = options.each_with_object({}) { |(k, v), memo| memo[k.to_s] = v }
+        @options  = options
       end
 
       def as_elastic
@@ -22,7 +22,9 @@ module Arelastic
           searches[k] = convert_to_elastic(v) if v
         end
 
-        { 'bool' => searches.merge(options) }
+        opts = stringify_options(options)
+
+        { 'bool' => searches.update(opts) }
       end
     end
   end

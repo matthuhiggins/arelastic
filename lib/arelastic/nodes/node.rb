@@ -13,6 +13,10 @@ module Arelastic
         end
       end
 
+      def stringify_options(options)
+        options.each_with_object({}) { |(k, v), memo| memo[k.to_s] = v }
+      end
+
       def ==(other)
         other.is_a?(Arelastic::Nodes::Node) && as_elastic == other.as_elastic
       end
