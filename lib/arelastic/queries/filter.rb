@@ -8,8 +8,9 @@ module Arelastic
       end
 
       def as_elastic
-        params = convert_to_elastic(query)
-        { 'filter' => params }.update(options)
+        {
+          'filter' => convert_to_elastic(query)
+        }.update(options)
       end
     end
   end
