@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Queries::MatchAllTest < Minitest::Test
+class Arelastic::Queries::MatchNoneTest < Minitest::Test
   def test_as_elastic
     match_all = Arelastic::Queries::MatchNone.new
 
