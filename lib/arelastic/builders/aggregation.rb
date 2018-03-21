@@ -7,12 +7,16 @@ module Arelastic
         end
       end
 
-      def terms options = {}
-        Arelastic::Aggregations::Terms.new(name, options)
-      end
-
       def histogram options
         Arelastic::Aggregations::Histogram.new name, options
+      end
+
+      def sample shard_size, aggs
+        Arelastic::Aggregations::Sampler.new(name, sample_size, aggs)
+      end
+
+      def terms options = {}
+        Arelastic::Aggregations::Terms.new(name, options)
       end
     end
   end
