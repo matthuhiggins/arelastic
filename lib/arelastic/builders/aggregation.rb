@@ -7,6 +7,14 @@ module Arelastic
         end
       end
 
+      def date_histogram options
+        Arelastic::Aggregations::DateHistogram.new name, options
+      end
+
+      def filter filter, options
+        Arelastic::Aggregations::Filter.new name, filter, options
+      end
+
       def histogram options
         Arelastic::Aggregations::Histogram.new name, options
       end
