@@ -1,15 +1,20 @@
 module Arelastic
   module Aggregations
     class Aggregation < Arelastic::Nodes::Node
-      attr_accessor :name, :options
+      attr_accessor :name, :meta, :options
 
       def initialize(name, options = {})
         @name    = name
+
+        options  = options.dup
+        @meta    = read_option! options, 'meta'
         @options = options
       end
 
       def as_elastic
-        {name => as_elastic_aggregation}
+        params = {name => as_elastic_aggregation}
+        params['meta'] = meta if meta
+        params
       end
 
       def nested(path)
