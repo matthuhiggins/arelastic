@@ -20,9 +20,9 @@ class Arelastic::Aggregations::AggregationTest < Minitest::Test
 
     expected = {
       "smallest" => {
-        "min" => {"field" => "pets.weight"}
+        "min" => {"field" => "pets.weight"},
+        "meta" => {"color" => "blue"}
       },
-      "meta" => {"color" => "blue"}
     }
     assert_equal expected, aggregation.as_elastic
   end

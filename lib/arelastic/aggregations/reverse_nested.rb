@@ -11,7 +11,7 @@ module Arelastic
       def as_elastic_aggregation
         params = path ? { "path" => path } : {}
 
-        { "reverse_nested" => params }
+        {"reverse_nested" => params}.merge(super)
       end
     end
   end

@@ -9,11 +9,7 @@ module Arelastic
         super(name, options)
       end
 
-      def as_elastic
-        {name => as_elastic_aggregation.merge(sub_aggregations_as_elastic)}
-      end
-
-      def sub_aggregations_as_elastic
+      def as_elastic_aggregation
         if aggs
           {'aggs' => Arelastic::Nodes::HashGroup.new(aggs).as_elastic}
         else

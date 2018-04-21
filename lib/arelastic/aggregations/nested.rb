@@ -9,7 +9,7 @@ module Arelastic
       end
 
       def as_elastic_aggregation
-        { "nested" => { "path" => path } }
+        {"nested" => { "path" => path }}.merge(super)
       end
     end
   end
