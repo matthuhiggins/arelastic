@@ -8,6 +8,8 @@ module Arelastic
       def convert_to_elastic(expr)
         if expr.is_a?(Array)
           expr.map { |e| convert_to_elastic(e) }
+        elsif expr.is_a?(Hash)
+          expr.transform_values { |e| convert_to_elastic(e) }
         else
           expr.respond_to?(:as_elastic) ? expr.as_elastic : expr
         end
