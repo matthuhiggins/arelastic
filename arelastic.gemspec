@@ -7,7 +7,6 @@ Gem::Specification.new do |s|
   s.description = 'Build Elastic Search queries with objects'
 
   s.required_ruby_version     = '>= 2.4.0'
-  s.required_rubygems_version = '>= 1.8.11'
   s.license                   = 'MIT'
 
   s.author            = 'Matthew Higgins'
