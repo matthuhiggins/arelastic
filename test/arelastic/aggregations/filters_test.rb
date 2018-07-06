@@ -9,18 +9,20 @@ class Arelastic::Aggregations::FiltersTest < Minitest::Test
 
     expected = {
       "foo" => {
-        "filters" => [
-          {
-            "exists" => {
-              "field" => "color"
+        "filters" => {
+          "filters" => [
+            {
+              "exists" => {
+                "field" => "color"
+              },
             },
-          },
-          {
-            "exists" => {
-              "field" => "price"
+            {
+              "exists" => {
+                "field" => "price"
+              }
             }
-          }
-        ]
+          ]
+        }
       }
     }
 
@@ -36,14 +38,16 @@ class Arelastic::Aggregations::FiltersTest < Minitest::Test
     expected = {
       "foo" => {
         "filters" => {
-          "color_count" => {
-            "exists" => {
-              "field" => "color"
-            }
-          },
-          "price_count" => {
-            "exists" => {
-              "field" => "price"
+          "filters" => {
+            "color_count" => {
+              "exists" => {
+                "field" => "color"
+              }
+            },
+            "price_count" => {
+              "exists" => {
+                "field" => "price"
+              }
             }
           }
         }

@@ -9,7 +9,7 @@ module Arelastic
       end
 
       def as_elastic_aggregation
-        {'filters' => convert_to_elastic(filters)}.merge(super)
+        {'filters' => {'filters' => convert_to_elastic(filters)}}.merge(super)
       end
     end
   end
