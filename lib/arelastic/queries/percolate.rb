@@ -11,10 +11,14 @@ module Arelastic
       def as_elastic
         {
           "percolate" => {
-            "field"     => field,
-            "document"  => document
+            "field"                  => field,
+            document_parameter_name  => document
           }.merge(options)
         }
+      end
+
+      def document_parameter_name
+        document.is_a?(Array) ? "documents" : "document"
       end
     end
   end
