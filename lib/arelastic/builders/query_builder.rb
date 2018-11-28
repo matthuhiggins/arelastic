@@ -24,24 +24,6 @@ module Arelastic
             klass.new(*args)
           end
         end
-
-        def fuzzy(field_name, value)
-          Arelastic::Queries::Match.new(
-            field_name,
-            query: value,
-            operator: 'and',
-            prefix_length: 3,
-            fuzziness: "AUTO"
-          )
-        end
-
-        def match(field_name, value)
-          Arelastic::Queries::Match.new(
-            field_name,
-            operator: 'and',
-            query: value
-          )
-        end
       end
     end
   end
