@@ -1,47 +1,55 @@
 module Arelastic
   module Builders
     class Query < Struct.new :name
+      MACROS_TO_ARELASTIC = {
+        bool:                Arelastic::Queries::Bool,
+        constant_score:      Arelastic::Queries::ConstantScore,
+        dis_max:             Arelastic::Queries::DisMax,
+        exists:              Arelastic::Queries::Exists,
+        field:               Arelastic::Queries::Field,
+        filter:              Arelastic::Queries::Filter,
+        function_score:      Arelastic::Queries::FunctionScore,
+        fuzzy:               Arelastic::Queries::Fuzzy,
+        geo_bounding_box:    Arelastic::Queries::GeoBoundingBox,
+        geo_distance:        Arelastic::Queries::GeoDistance,
+        has_child:           Arelastic::Queries::HasChild,
+        ids:                 Arelastic::Queries::Ids,
+        limit:               Arelastic::Queries::Limit,
+        match:               Arelastic::Queries::Match,
+        match_all:           Arelastic::Queries::MatchAll,
+        match_none:          Arelastic::Queries::MatchNone,
+        match_phrase:        Arelastic::Queries::MatchPhrase,
+        multi_match:         Arelastic::Queries::MultiMatch,
+        nested:              Arelastic::Queries::Nested,
+        percolate:           Arelastic::Queries::Percolate,
+        prefix:              Arelastic::Queries::Prefix,
+        query:               Arelastic::Queries::Query,
+        query_string:        Arelastic::Queries::QueryString,
+        range:               Arelastic::Queries::Range,
+        regexp:              Arelastic::Queries::Regexp,
+        script:              Arelastic::Queries::Script,
+        simple_query_string: Arelastic::Queries::SimpleQueryString,
+        term:                Arelastic::Queries::Term,
+        terms:               Arelastic::Queries::Terms,
+        wildcard:            Arelastic::Queries::Wildcard
+      }
+
       class << self
         def [](field)
           new(field)
         end
 
-        def constant_score(search)
-          query Arelastic::Queries::ConstantScore.new(search)
-        end
-
-        def bool(must: nil, filter: nil, should: nil, must_not: nil)
-          query Arelastic::Queries::Bool.new(must: must, filter: filter, should: should, must_not: must_not)
-        end
-
-        def match_all
-          query Arelastic::Queries::MatchAll.new
-        end
-
-        def multi_match(query, fields, options = {})
-          query Arelastic::Queries::MultiMatch.new query, fields, options
-        end
-
-        private
-          def query value
-            Arelastic::Searches::Query.new value
+        MACROS_TO_ARELASTIC.each do |macro, klass|
+          define_method macro do |*args|
+            klass.new(*args)
           end
+        end
       end
 
-      def field other
-        Arelastic::Queries::Field.new name, other
-      end
-
-      def term other
-        Arelastic::Queries::Term.new name, other
-      end
-
-      def terms other
-        Arelastic::Queries::Terms.new name, other
-      end
-
-      def match other
-        Arelastic::Queries::Match.new name, other
+      MACROS_TO_ARELASTIC.each do |macro, klass|
+        define_method macro do |*args|
+          klass.new(name, *args)
+        end
       end
     end
   end
