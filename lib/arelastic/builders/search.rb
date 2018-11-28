@@ -1,10 +1,6 @@
-require 'arelastic/builders/query_builder'
-
 module Arelastic
   module Builders
     class Search
-      include Arelastic::Builders::QueryBuilder
-
       class << self
         def filter
           Arelastic::Builders::Filter

@@ -3,7 +3,7 @@ require 'helper'
 class Arelastic::Builders::QueryTest < Minitest::Test
   def test_constant_score
     query = Arelastic::Builders::Query.constant_score({"foo" => "bar"})
-    expected = {"query" => {"constant_score" => {"foo" => "bar"}}}
+    expected = {"constant_score" => {"foo" => "bar"}}
 
     assert_equal expected, query.as_elastic
   end
@@ -13,14 +13,14 @@ class Arelastic::Builders::QueryTest < Minitest::Test
       must: {"query_string" => "foo"},
       filter: {"term" => "bar"}
     )
-    expected = {"query" => {"bool" => {"must" => {"query_string" => "foo"}, "filter" => {"term" => "bar"}}}}
+    expected = {"bool" => {"must" => {"query_string" => "foo"}, "filter" => {"term" => "bar"}}}
 
     assert_equal expected, query.as_elastic
   end
 
   def test_match_all
     query = Arelastic::Builders::Query.match_all
-    expected = {"query" => {"match_all" => {}}}
+    expected = {"match_all" => {}}
 
     assert_equal expected, query.as_elastic
   end
