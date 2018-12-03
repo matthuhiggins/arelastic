@@ -7,3 +7,11 @@ require 'arelastic/searches'
 require 'arelastic/sorts'
 
 require 'arelastic/builders'
+
+module Arelastic
+  class << self
+    def queries
+      Arelastic::Builders::Search.query
+    end
+  end
+end
