@@ -1,15 +1,15 @@
 require 'helper'
 
-class Arelastic::Builders::QueryTest < Minitest::Test
+class Arelastic::Builders::QueriesTest < Minitest::Test
   def test_constant_score
-    query = Arelastic::Builders::Query.constant_score({"foo" => "bar"})
+    query = Arelastic::Builders::Queries.constant_score({"foo" => "bar"})
     expected = {"constant_score" => {"foo" => "bar"}}
 
     assert_equal expected, query.as_elastic
   end
 
   def test_bool
-    query = Arelastic::Builders::Query.bool(
+    query = Arelastic::Builders::Queries.bool(
       must: {"query_string" => "foo"},
       filter: {"term" => "bar"}
     )
@@ -19,39 +19,39 @@ class Arelastic::Builders::QueryTest < Minitest::Test
   end
 
   def test_match_all
-    query = Arelastic::Builders::Query.match_all
+    query = Arelastic::Builders::Queries.match_all
     expected = {"match_all" => {}}
 
     assert_equal expected, query.as_elastic
   end
 
   def test_multi_match
-    Arelastic::Builders::Query.multi_match 'blue', ['color', 'description']
+    Arelastic::Builders::Queries.multi_match 'blue', ['color', 'description']
   end
 
   def test_field
-    query = Arelastic::Builders::Query['user'].field 'kimchy'
+    query = Arelastic::Builders::Queries['user'].field 'kimchy'
     expected = { "field" => { "user" => "kimchy" } }
 
     assert_equal expected, query.as_elastic
   end
 
   def test_term
-    query = Arelastic::Builders::Query['user'].term 'kimchy'
+    query = Arelastic::Builders::Queries['user'].term 'kimchy'
     expected = {"term" => { "user" => "kimchy" }}
 
     assert_equal expected, query.as_elastic
   end
 
   def test_terms
-    query = Arelastic::Builders::Query['tags'].terms ['blue', 'pill']
+    query = Arelastic::Builders::Queries['tags'].terms ['blue', 'pill']
     expected = {"terms" => { "tags" => ["blue", "pill"] }}
 
     assert_equal expected, query.as_elastic
   end
 
   def test_match
-    query = Arelastic::Builders::Query['message'].match "hello"
+    query = Arelastic::Builders::Queries['message'].match "hello"
     expected = {"match" => { "message" => "hello" }}
 
     assert_equal expected, query.as_elastic

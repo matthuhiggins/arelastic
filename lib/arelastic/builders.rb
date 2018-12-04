@@ -1,6 +1,6 @@
 require 'arelastic/builders/aggregation'
 require 'arelastic/builders/filter'
 require 'arelastic/builders/mapping'
-require 'arelastic/builders/query'
+require 'arelastic/builders/queries'
 require 'arelastic/builders/search'
 require 'arelastic/builders/sort'

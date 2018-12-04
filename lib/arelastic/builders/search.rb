@@ -14,8 +14,8 @@ module Arelastic
           Arelastic::Builders::Aggregation
         end
 
-        def query
-          Arelastic::Builders::Query
+        def queries
+          Arelastic::Builders::Queries
         end
 
         def sort

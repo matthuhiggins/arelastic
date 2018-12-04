@@ -11,7 +11,7 @@ require 'arelastic/builders'
 module Arelastic
   class << self
     def queries
-      Arelastic::Builders::Search.query
+      Arelastic::Builders::Queries
     end
   end
 end
