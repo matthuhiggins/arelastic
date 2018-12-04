@@ -1,6 +1,6 @@
 module Arelastic
   module Builders
-    class Query < Struct.new :name
+    class Queries < Struct.new :name
       MACROS_TO_ARELASTIC = {
         bool:                Arelastic::Queries::Bool,
         constant_score:      Arelastic::Queries::ConstantScore,

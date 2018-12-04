@@ -14,7 +14,7 @@ class Arelastic::Builders::SearchTest < Minitest::Test
   end
 
   def test_query
-    assert_equal Arelastic::Builders::Query, Arelastic::Builders::Search.query
+    assert_equal Arelastic::Builders::Queries, Arelastic::Builders::Search.queries
   end
 
   def test_sort
