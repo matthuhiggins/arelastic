@@ -12,6 +12,7 @@ module Arelastic
         fuzzy:               Arelastic::Queries::Fuzzy,
         geo_bounding_box:    Arelastic::Queries::GeoBoundingBox,
         geo_distance:        Arelastic::Queries::GeoDistance,
+        geo_polygon:         Arelastic::Queries::GeoPolygon,
         has_child:           Arelastic::Queries::HasChild,
         ids:                 Arelastic::Queries::Ids,
         limit:               Arelastic::Queries::Limit,
