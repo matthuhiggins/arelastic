@@ -20,7 +20,7 @@ module Arelastic
       def negate
         self.class.new(
           path,
-          Arelastic::Queries::Bool.new must_not: self
+          Arelastic::Queries::Bool.new('must_not' => expr)
         )
       end
     end
