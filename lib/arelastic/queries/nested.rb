@@ -16,6 +16,13 @@ module Arelastic
 
         { 'nested' => params }
       end
+
+      def negate
+        self.class.new(
+          path,
+          Arelastic::Queries::Bool.new must_not: self
+        )
+      end
     end
   end
 end
