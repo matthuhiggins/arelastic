@@ -1,6 +1,6 @@
 require 'helper'
 
-class Arelastic::Queries::GeoDistanceTest < Minitest::Test
+class Arelastic::Queries::GeoPolygonTest < Minitest::Test
   def test_as_elastic
     points = [
       {"lat" => 47.15, "lon" => -124.33},
