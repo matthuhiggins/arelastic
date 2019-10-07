@@ -56,4 +56,4 @@ Arelastic::Nodes::HashGroup.new(search).as_elastic
 # => {"query"=>{"term"=>{"name"=>"Fun"}}, "size"=>20, "from"=>20, "sort"=>[{"price"=>"asc"}]}
 ```
 
-Some helpful Arel builders can be found [here](/blob/master/lib/arelastic/builders/filter.rb.)
+Some helpful Arel builders can be found [here](/lib/arelastic/builders/filter.rb).
