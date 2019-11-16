@@ -25,6 +25,11 @@ class Arelastic::Builders::QueriesTest < Minitest::Test
     assert_equal expected, query.as_elastic
   end
 
+  def test_ids
+    expected = {"ids" => {"values"=>["5", "6"]}}
+    assert_equal expected, Arelastic::Builders::Queries.ids(['5', '6']).as_elastic
+  end
+
   def test_multi_match
     Arelastic::Builders::Queries.multi_match 'blue', ['color', 'description']
   end
