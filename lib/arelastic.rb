@@ -13,5 +13,9 @@ module Arelastic
     def queries
       Arelastic::Builders::Queries
     end
+
+    def aggregations
+      Arelastic::Builders::Aggregations
+    end
   end
 end

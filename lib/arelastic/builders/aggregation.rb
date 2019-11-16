@@ -1,30 +1,21 @@
 module Arelastic
   module Builders
-    class Aggregation < Struct.new :name
+    class Aggregations
       class << self
-        def [](name)
-          new(name)
+        MACROS_TO_ARELASTIC = {
+          date_histogram: Arelastic::Aggregations::DateHistogram,
+          filter:         Arelastic::Aggregations::Filter,
+          histogram:      Arelastic::Aggregations::Histogram,
+          nested:         Arelastic::Aggregations::Nested,
+          sample:         Arelastic::Aggregations::Sampler,
+          terms:          Arelastic::Aggregations::Terms
+        }
+
+        MACROS_TO_ARELASTIC.each do |macro, klass|
+          define_method macro do |*args|
+            klass.new(*args)
+          end
         end
-      end
-
-      def date_histogram options
-        Arelastic::Aggregations::DateHistogram.new name, options
-      end
-
-      def filter filter, options
-        Arelastic::Aggregations::Filter.new name, filter, options
-      end
-
-      def histogram options
-        Arelastic::Aggregations::Histogram.new name, options
-      end
-
-      def sample shard_size, aggs
-        Arelastic::Aggregations::Sampler.new(name, sample_size, aggs)
-      end
-
-      def terms options = {}
-        Arelastic::Aggregations::Terms.new(name, options)
       end
     end
   end
