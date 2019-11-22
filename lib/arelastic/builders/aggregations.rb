@@ -3,7 +3,7 @@ module Arelastic
     class Aggregations
       class << self
         MACROS_TO_ARELASTIC = {
-          cardinnality:   Arelastic::Aggregations::Cardinality,
+          cardinality:   Arelastic::Aggregations::Cardinality,
           date_histogram: Arelastic::Aggregations::DateHistogram,
           filter:         Arelastic::Aggregations::Filter,
           filters:        Arelastic::Aggregations::Filters,
