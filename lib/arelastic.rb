@@ -13,5 +13,13 @@ module Arelastic
     def queries
       Arelastic::Builders::Queries
     end
+
+    def [](field)
+      Arelastic::Builders::Queries[field]
+    end
+
+    def aggregations
+      Arelastic::Builders::Aggregations
+    end
   end
 end

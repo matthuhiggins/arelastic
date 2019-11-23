@@ -52,6 +52,39 @@ module Arelastic
           klass.new(name, *args)
         end
       end
+
+      def in other, options = {}
+        case other
+        when Range
+          if other.exclude_end?
+            range 'gte' => other.begin, 'lt' => other.end
+          else
+            range 'gte' => other.begin, 'lte' => other.end
+          end
+        else
+          terms other, options
+        end
+      end
+
+      def missing(options = {})
+        exists(options).negate
+      end
+
+      def gte other
+        range 'gte' => other
+      end
+
+      def gt other
+        range 'gt' => other
+      end
+
+      def lte other
+        range 'lte' => other
+      end
+
+      def lt other
+        range 'lt' => other
+      end
     end
   end
 end
