@@ -20,14 +20,14 @@ module Arelastic
       end
 
       def parse_sort
-        if sort.is_a?(Array)
-          sort.map { |item| Arelastic::Sorts::Field.new(item).as_elastic }
-        elsif sort.is_a?(Hash)
-          sort.map do |bucket_path, order|
-            Arelastic::Sorts::Field.new({ bucket_path => order }).as_elastic
-          end
+        if sort.is_a?(Hash)
+          sort.map { |bucket_path, order| { bucket_path => order } }
         elsif sort.is_a?(String)
-          Arelastic::Sorts::Field.new(sort).as_elastic
+          [sort]
+        elsif sort.is_a?(Array)
+          sort
+        else
+          raise TypeError.new('Expecting a hash, string, or array as the "sort" argument')
         end
       end
     end
