@@ -1,6 +1,7 @@
 require 'arelastic/aggregations/aggregation'
 require 'arelastic/aggregations/bucket'
 
+require 'arelastic/aggregations/bucket_sort'
 require 'arelastic/aggregations/cardinality'
 require 'arelastic/aggregations/date_histogram'
 require 'arelastic/aggregations/filter'
