@@ -3,8 +3,7 @@ require 'helper'
 class Arelastic::Aggregations::BucketSortTest < Minitest::Test
   def test_parse_sort
     assert_equal ['foo'], parse_sort('foo')
-    assert_equal [{'foo' => 'desc'}], parse_sort({'foo' => 'desc'})
-    assert_equal [{'foo' => { 'order' => 'desc' }}, 'bar'], parse_sort([{'foo' => { 'order' => 'desc'}}, 'bar'])
+    assert_equal [{'foo' => 'desc'}, {'bar' => 'asc'}], parse_sort({'foo' => 'desc', 'bar' => 'asc'})
   end
 
   def test_size_and_from
