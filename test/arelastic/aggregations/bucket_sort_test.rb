@@ -20,6 +20,6 @@ class Arelastic::Aggregations::BucketSortTest < Minitest::Test
   end
 
   def parse_sort(sort)
-    Arelastic::Aggregations::BucketSort.new('foosort', sort: sort).parse_sort
+    Arelastic::Aggregations::BucketSort.new('foosort', sort: sort).send(:parse_sort)
   end
 end
