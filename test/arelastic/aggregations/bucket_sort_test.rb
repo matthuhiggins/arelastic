@@ -1,25 +1,45 @@
-require 'helper'
+require "helper"
 
 class Arelastic::Aggregations::BucketSortTest < Minitest::Test
-  def test_parse_sort
-    assert_equal ['foo'], parse_sort('foo')
-    assert_equal [{'foo' => 'desc'}, {'bar' => 'asc'}], parse_sort({'foo' => 'desc', 'bar' => 'asc'})
-  end
+  def test_as_elastic
+    aggregation = Arelastic::Aggregations::BucketSort.new("foo_agg", "size" => 3, "from" => 5, "sort" => "price")
 
-  def test_size_and_from
-    aggregation = Arelastic::Aggregations::BucketSort.new('foo_agg', 'size' => 3, 'from' => 5)
     expected = {
-      'foo_agg' => {
-        'bucket_sort' => {
-          'from' => 5,
-          'size' => 3
+      "foo_agg" => {
+        "bucket_sort" => {
+          "sort" => "price",
+          "from" => 5,
+          "size" => 3
         }
       }
     }
     assert_equal expected, aggregation.as_elastic
   end
 
-  def parse_sort(sort)
-    Arelastic::Aggregations::BucketSort.new('foosort', sort: sort).as_elastic['foosort']['bucket_sort']['sort']
+  def test_arelastic_sort
+    sort = Arelastic::Sorts::Field.new("price" => "desc")
+    aggregation = Arelastic::Aggregations::BucketSort.new("foo_agg", "sort" => sort)
+
+    expected = {
+      "foo_agg" => {
+        "bucket_sort" => {
+          "sort" => {"price" => "desc"}
+        }
+      }
+    }
+    assert_equal expected, aggregation.as_elastic
+  end
+
+  def test_optional_sort
+    aggregation = Arelastic::Aggregations::BucketSort.new("foo_agg", "size" => 3)
+
+    expected = {
+      "foo_agg" => {
+        "bucket_sort" => {
+          "size" => 3
+        }
+      }
+    }
+    assert_equal expected, aggregation.as_elastic
   end
 end
