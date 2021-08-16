@@ -1,11 +1,9 @@
 [![Build Status](https://travis-ci.org/matthuhiggins/arelastic.svg?branch=master)](https://travis-ci.org/matthuhiggins/arelastic) [![Code Climate](https://codeclimate.com/github/matthuhiggins/arelastic/badges/gpa.svg)](https://codeclimate.com/github/matthuhiggins/arelastic)
 # Arelastic
 
-Arelastic is a Elasticsearch AST manager for Ruby. It simplifies the generation complex of Elasticsearch queries
+Arelastic is a ElasticSearch AST manager for Ruby. It simplifies the generation complex of Elasticsearch queries.
 
-It is intended to be a framework framework; that is, you can build your own ORM with it.
-
-One example is [Elastic Record](https://github.com/data-axle/elastic_record)
+It was extracted from my [Elastic Record](https://github.com/data-axle/elastic_record) project.
 
 ## Usage
 
