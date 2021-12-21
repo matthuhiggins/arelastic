@@ -14,6 +14,7 @@ module Arelastic
         geo_distance:        Arelastic::Queries::GeoDistance,
         geo_polygon:         Arelastic::Queries::GeoPolygon,
         has_child:           Arelastic::Queries::HasChild,
+        has_parent:          Arelastic::Queries::HasParent,
         ids:                 Arelastic::Queries::Ids,
         limit:               Arelastic::Queries::Limit,
         match:               Arelastic::Queries::Match,
