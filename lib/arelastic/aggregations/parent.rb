@@ -1,8 +1,8 @@
 module Arelastic
   module Aggregations
-    class Nested < Arelastic::Aggregations::SpecialSingleBucket
+    class Parent < Arelastic::Aggregations::SpecialSingleBucket
       def specification_key
-        'path'
+        'type'
       end
     end
   end
