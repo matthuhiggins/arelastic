@@ -9,13 +9,7 @@ module Arelastic
       end
 
       def as_elastic_aggregation
-        aggregation_name = self.class.name.split('::').last.downcase
-
-        {
-          aggregation_name => {
-            specification_key => specification
-          }
-        }.merge(super)
+        { aggregation_name => { specification_key => specification } }.merge(super)
       end
     end
   end
