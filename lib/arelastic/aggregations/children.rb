@@ -1,12 +1,12 @@
 module Arelastic
   module Aggregations
-    class Nested < Arelastic::Aggregations::SpecialSingleBucket
+    class Children < Arelastic::Aggregations::SpecialSingleBucket
       def aggregation_name
-        'nested'
+        'children'
       end
 
       def specification_key
-        'path'
+        'type'
       end
     end
   end
