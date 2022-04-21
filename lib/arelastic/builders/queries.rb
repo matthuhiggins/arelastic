@@ -13,6 +13,7 @@ module Arelastic
         geo_bounding_box:    Arelastic::Queries::GeoBoundingBox,
         geo_distance:        Arelastic::Queries::GeoDistance,
         geo_polygon:         Arelastic::Queries::GeoPolygon,
+        geo_shape_polygon:   Arelastic::Queries::GeoShape::Polygon,
         has_child:           Arelastic::Queries::HasChild,
         has_parent:          Arelastic::Queries::HasParent,
         ids:                 Arelastic::Queries::Ids,
