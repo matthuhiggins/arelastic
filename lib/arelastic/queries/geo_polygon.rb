@@ -5,7 +5,6 @@ module Arelastic
       + 'Use Arelastic::Queries::GeoShape instead.'
 
       attr_accessor :field, :points, :options
-
       def initialize(field, points, options = {})
         @field   = field
         @points  = points
@@ -13,9 +12,9 @@ module Arelastic
       end
 
       def as_elastic
-        params = { field => { 'points' => points } }.update(options)
+        params = {field => {"points" => points}}.update(options)
 
-        { 'geo_polygon' => params }
+        { "geo_polygon" => params }
       end
     end
   end
