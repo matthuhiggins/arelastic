@@ -13,7 +13,12 @@ module Arelastic
         end
 
         def as_elastic
-          { field => { 'type' => 'Polygon', 'coordinates' => points } }.update(options)
+          params = {
+            'shape' => { 'type' => 'polygon', 'coordinates' => [points] },
+            'relation' => 'within'
+          }.update(options)
+
+          { 'geo_shape' => { field => params } }
         end
       end
     end
