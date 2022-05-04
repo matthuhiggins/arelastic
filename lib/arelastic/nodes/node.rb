@@ -7,7 +7,7 @@ module Arelastic
 
       def convert_to_elastic(expr)
         if expr.is_a?(Array)
-          expr.map { |e| convert_to_elastic(e) }
+          expr.uniq.map { |e| convert_to_elastic(e) }
         elsif expr.is_a?(Hash)
           expr.transform_values { |e| convert_to_elastic(e) }
         else
@@ -22,6 +22,12 @@ module Arelastic
       def ==(other)
         other.is_a?(Arelastic::Nodes::Node) && as_elastic == other.as_elastic
       end
+
+      def hash
+        as_elastic.hash
+      end
+
+      alias eql? ==
     end
   end
 end
