@@ -8,9 +8,14 @@ class Arelastic::Queries::GeoShape::PolygonTest < Minitest::Test
       [-123.84, 46.15]
     ]
     expected = {
-      'person.location' => {
-        'type' => 'Polygon',
-        'coordinates' => points
+      'geo_shape' => {
+        'person.location' => {
+          'shape' => {
+            'type' => 'polygon',
+            'coordinates' => [points]
+          },
+          'relation' => 'within'
+        }
       }
     }
 
