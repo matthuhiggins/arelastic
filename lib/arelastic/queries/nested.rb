@@ -17,6 +17,10 @@ module Arelastic
 
         { 'nested' => params }
       end
+
+      def path_and_options
+        [path, options]
+      end
     end
   end
 end
