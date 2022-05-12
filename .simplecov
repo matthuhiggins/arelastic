@@ -10,5 +10,5 @@ SimpleCov.start 'test_frameworks' do
   add_group "Sorts", "lib/arelastic/sorts"
 end
 
-SimpleCov.minimum_coverage line: 97.8, branch: 97.2
-SimpleCov.minimum_coverage_by_file line: 70, branch: 92.8
+SimpleCov.minimum_coverage line: 97.9, branch: 97.5
+SimpleCov.minimum_coverage_by_file line: 71.4, branch: 92.8

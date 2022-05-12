@@ -8,6 +8,6 @@ class Arelastic::Arities::PolyadicTest < Minitest::Test
     end
 
     expected = {'xor' => [{'a' => 'b'}, {'x' => 'y'}]}
-    assert_equal expected, node.new([expr.new('a' => 'b'), expr.new('x' => 'y')]).as_elastic
+    assert_equal expected, node.new([expr.new({ 'a' => 'b' }), expr.new({'x' => 'y' })]).as_elastic
   end
 end
